@@ -17,7 +17,7 @@ const CERTIFICATES_DATA = [
     issuer: "LO KREATIF (APTISI Wilayah VII / Kemendikbudristek)",
     year: "2024",
     status: "Verified Champion",
-    image: "assets/certificates/lo-kreatif.png",
+    image: "assets/certificates/lo-kreatif.jpg",
     fallbackIcon: "🏆",
     overview: "Meraih predikat Juara 1 Tingkat Nasional dalam ajang bergengsi LO KREATIF (Lomba Kreativitas Mahasiswa Nasional). Penghargaan ini mengakui keunggulan dalam perancangan produk digital, fungsionalitas arsitektur perangkat lunak, serta implementasi solusi teknologi yang tepat guna dan bernilai nyata bagi masyarakat dan industri.",
     highlights: [
@@ -37,7 +37,7 @@ const CERTIFICATES_DATA = [
     issuer: "Dicoding Indonesia (Google Developers Authorized Partner)",
     year: "2024",
     status: "Verified Certificate",
-    image: "assets/certificates/dicoding-web.png",
+    image: "assets/certificates/dicoding-web.jpg",
     fallbackIcon: "📜",
     overview: "Sertifikasi resmi penyelesaian kurikulum berstandar industri global dari Dicoding Indonesia. Memvalidasi kemampuan dalam membangun antarmuka web modern, manipulasi DOM interaktif, modularitas komponen, pengelolaan state, dan konsumsi RESTful API.",
     highlights: [
@@ -57,9 +57,9 @@ const CERTIFICATES_DATA = [
     issuer: "Dicoding Indonesia",
     year: "2024",
     status: "Verified Certificate",
-    image: "assets/certificates/dicoding-dasar.png",
+    image: "assets/certificates/dicoding-android.jpg",
     fallbackIcon: "🎓",
-    overview: "Sertifikasi kelulusan kurikulum dasar rekayasa perangkat lunak terakreditasi industri. Memvalidasi pemahaman mendalam tentang logika komputasional, struktur data, paradigma pemrograman terstruktur, dan best practices software development.",
+    overview: "Sertifikasi kelulusan kurikulum dasar rekayasa perangkat lunak terakreditasi industri — berbasis pengembangan Android modern. Memvalidasi pemahaman mendalam tentang logika komputasional, struktur data, paradigma pemrograman terstruktur, dan best practices software development.",
     highlights: [
       "Pemahaman konsep dasar komputasi, algoritma pemecahan masalah, dan struktur data",
       "Prinsip clean code, penamaan variabel semantik, dan modularitas fungsi",
