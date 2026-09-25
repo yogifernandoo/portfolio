@@ -12,35 +12,35 @@ const PORTFOLIO_PROJECTS = [
     subtitle: "Aplikasi Point of Sale (POS) & Manajemen Kasir Toko berbasis Laravel, PHP, MySQL, JavaScript, dan Tailwind CSS",
     year: "2026",
     status: "Production Ready",
-    bannerImage: "assets/projects/pos (1).png",
+    bannerImage: "assets/projects/pos (7).png",
     images: [
       {
-        src: "assets/projects/pos (1).png",
-        caption: "Tampilan Utama Dashboard Manajemen Transaksi & Ringkasan Toko"
-      },
-      {
-        src: "assets/projects/pos (2).png",
-        caption: "Menu Kasir Interaktif (Point of Sale) & Keranjang Belanja Transaksi Cepat"
-      },
-      {
-        src: "assets/projects/pos (3).png",
-        caption: "Katalog & Manajemen Stok Barang / Produk Toko"
-      },
-      {
-        src: "assets/projects/pos (4).png",
-        caption: "Rekapitulasi Laporan Penjualan, Keuntungan, & Grafik Arus Kas"
-      },
-      {
-        src: "assets/projects/pos (5).png",
-        caption: "Pengaturan Profil, Manajemen Akun Kasir, & Hak Akses Admin"
+        src: "assets/projects/pos (7).png",
+        caption: "Riwayat Lengkap Log Transaksi & Mutasi Kas Masuk / Keluar"
       },
       {
         src: "assets/projects/pos (6).png",
         caption: "Pratinjau Cetak Struk Nota Belanja & Invoice Transaksi Kasir"
       },
       {
-        src: "assets/projects/pos (7).png",
-        caption: "Riwayat Lengkap Log Transaksi & Mutasi Kas Masuk / Keluar"
+        src: "assets/projects/pos (5).png",
+        caption: "Pengaturan Profil, Manajemen Akun Kasir, & Hak Akses Admin"
+      },
+      {
+        src: "assets/projects/pos (4).png",
+        caption: "Rekapitulasi Laporan Penjualan, Keuntungan, & Grafik Arus Kas"
+      },
+      {
+        src: "assets/projects/pos (3).png",
+        caption: "Katalog & Manajemen Stok Barang / Produk Toko"
+      },
+      {
+        src: "assets/projects/pos (2).png",
+        caption: "Menu Kasir Interaktif (Point of Sale) & Keranjang Belanja Transaksi Cepat"
+      },
+      {
+        src: "assets/projects/pos (1).png",
+        caption: "Tampilan Utama Dashboard Manajemen Transaksi & Ringkasan Toko"
       }
     ],
     overview: "POS TOKO YOGI adalah sistem Point of Sale (POS) dan manajemen toko yang dirancang untuk mempermudah transaksi kasir harian, pelacakan stok produk secara real-time, pencatatan mutasi kas, serta pembuatan laporan penjualan dan keuangan toko secara cepat, akurat, dan terstruktur.",

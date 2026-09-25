@@ -147,26 +147,22 @@ function setupMeteorTrigger() {
   }
 }
 
-// Cek apakah ada file foto 'assets/profile.jpg' atau 'assets/profile.png'
+// Cek ketersediaan file foto profil nyata 'assets/profile.png' atau 'assets/profile.jpg'
 function checkRealProfilePhoto() {
   const avatarImg = document.getElementById("developer-avatar");
   if (!avatarImg) return;
 
-  // Coba cek ketersediaan assets/profile.jpg
-  const testImg = new Image();
-  testImg.src = "assets/profile.jpg";
-  testImg.onload = function () {
-    // Jika file nyata ditemukan di folder assets/profile.jpg, gunakan langsung!
-    avatarImg.src = "assets/profile.jpg";
+  const testPng = new Image();
+  testPng.src = "assets/profile.png";
+  testPng.onload = function () {
+    avatarImg.src = "assets/profile.png";
   };
-  testImg.onerror = function () {
-    // Jika tidak ada, cek profile.png
-    const testPng = new Image();
-    testPng.src = "assets/profile.png";
-    testPng.onload = function () {
-      avatarImg.src = "assets/profile.png";
+  testPng.onerror = function () {
+    const testJpg = new Image();
+    testJpg.src = "assets/profile.jpg";
+    testJpg.onload = function () {
+      avatarImg.src = "assets/profile.jpg";
     };
-    // Jika keduanya tidak ada, avatarImg tetap menggunakan assets/profile.svg yang sudah sangat rapi
   };
 }
 
