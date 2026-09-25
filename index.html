@@ -20,7 +20,7 @@
 
   <!-- Background Interactive Cosmic Canvas -->
   <canvas id="space-canvas" aria-hidden="true"></canvas>
-
+~~
   <div class="cosmic-page-wrap">
     
     <!-- ====================================================================
@@ -410,6 +410,7 @@
         <div class="modal-image-showcase">
           <button id="modal-prev-img" class="gallery-nav-btn gallery-nav-prev" aria-label="Gambar Sebelumnya">‹</button>
           <div class="modal-img-viewport">
+            <span class="gallery-counter-badge" id="modal-img-counter">📸 1 / 1</span>
             <img id="modal-main-image" src="" alt="Pratinjau Dokumentasi Proyek">
           </div>
           <button id="modal-next-img" class="gallery-nav-btn gallery-nav-next" aria-label="Gambar Berikutnya">›</button>
@@ -607,9 +608,14 @@
         </div>
 
         <div class="form-group">
-          <label for="crud-image-file">Upload Foto Screenshot Dokumentasi</label>
-          <input type="file" id="crud-image-file" accept="image/*" class="cosmic-input" style="padding: 0.5rem; font-size: 0.85rem;">
-          <img id="crud-img-preview" src="" alt="Pratinjau Screenshot" style="width: 100%; max-height: 200px; object-fit: contain; margin-top: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-space); display: none;">
+          <label for="crud-image-file">Upload Foto Screenshot Dokumentasi <small style="color:var(--text-secondary); font-weight:400;">(bisa pilih banyak foto sekaligus, tidak ada batas!)</small></label>
+          <label class="crud-dropzone" for="crud-image-file" id="crud-dropzone-label">
+            <span class="crud-dropzone-icon">🖼️</span>
+            <span>Klik atau seret foto ke sini</span>
+            <small>Pilih lebih dari 1 foto sekaligus — JPG, PNG, WebP, dll.</small>
+            <input type="file" id="crud-image-file" accept="image/*" multiple class="sr-only">
+          </label>
+          <div id="crud-gallery-preview" class="crud-gallery-preview"></div>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">

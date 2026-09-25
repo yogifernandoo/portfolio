@@ -149,10 +149,30 @@
   async function attemptLogin(password) {
     const errorMsg = document.getElementById("admin-login-error");
     const dialog = document.getElementById("admin-login-dialog");
-    const hash = await computeSHA256(password);
+    const input = document.getElementById("admin-password-input");
+
+    // Tampilkan indikator loading
+    if (errorMsg) { errorMsg.style.display = "none"; }
+    if (input) input.disabled = true;
+
+    let hash;
+    try {
+      hash = await computeSHA256(password);
+    } catch (e) {
+      // Jika crypto.subtle gagal (unlikely di HTTPS), hash akan null
+      hash = null;
+    }
+
     const validHash = getStoredHash();
 
-    if (hash === validHash) {
+    // Cek: cocokkan hash SHA-256 ATAU langsung bandingkan teks (fallback darurat)
+    const hashMatch = hash !== null && hash === validHash;
+    // Fallback plaintext hanya berlaku untuk default password
+    const plaintextMatch = validHash === DEFAULT_HASH && password === "yogi2026";
+
+    if (input) input.disabled = false;
+
+    if (hashMatch || plaintextMatch) {
       setLoggedIn(true);
       if (dialog) {
         if (typeof dialog.close === "function") dialog.close();
@@ -225,10 +245,12 @@
       });
     }
 
-    // 3. Deteksi Hash URL #admin
-    if (window.location.hash === "#admin") {
+    // 3. Deteksi Hash URL #admin ATAU query parameter ?admin
+    const urlParams = new URLSearchParams(window.location.search);
+    if (window.location.hash === "#admin" || urlParams.has("admin")) {
       history.replaceState(null, null, window.location.pathname);
-      openSecretLoginDialog();
+      // Beri sedikit delay agar halaman selesai render
+      setTimeout(openSecretLoginDialog, 400);
     }
 
     // Form Submit pada Dialog Login
