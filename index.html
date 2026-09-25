@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogi Fernando — Web Developer & Cosmic Tech Portfolio</title>
+  <meta name="description" content="Portofolio personal Yogi Fernando - Web Developer berfokus pada Laravel, PHP, React, JavaScript, Tailwind CSS, dan MySQL.">
+  <meta name="author" content="Yogi Fernando">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yogi Fernando — Web Developer Portfolio">
+  <meta property="og:description" content="Jelajahi dokumentasi proyek web, arsitektur sistem, dan simulasi orbit teknologi interaktif.">
+  <meta property="og:image" content="assets/profile.svg">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/profile.svg">
+</head>
+<body>
+
+  <!-- Background Interactive Cosmic Canvas -->
+  <canvas id="space-canvas" aria-hidden="true"></canvas>
+
+  <div class="cosmic-page-wrap">
+    
+    <!-- ====================================================================
+         HEADER / NAVIGATION
+         ==================================================================== -->
+    <header class="cosmic-header" id="header">
+      <div class="container header-inner">
+        <a href="#beranda" class="brand-link" aria-label="Beranda Portofolio">
+          <div class="brand-icon-wrap" title="✦ Yogi.dev">🪐</div>
+          <span class="brand-callsign">YOGI<span>.DEV</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="main-nav" id="main-nav" aria-label="Navigasi Utama">
+          <a href="#beranda" class="nav-link active">Beranda</a>
+          <a href="#orbit-keahlian" class="nav-link">Orbit Keahlian</a>
+          <a href="#proyek" class="nav-link">Portofolio</a>
+          <a href="projects.html" class="nav-link">Halaman Arsip Proyek ↗</a>
+          <a href="#prinsip" class="nav-link">Prinsip</a>
+          <a href="#kontak" class="nav-link">Kontak</a>
+        </nav>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <button id="audio-toggle-btn" class="btn-audio-toggle" title="Nyalakan/Matikan Efek Suara Semesta">
+            <span class="sound-wave-icon">🔇</span>
+            <span>Sound: OFF</span>
+          </button>
+          
+          <a href="#kontak" class="btn-primary-ghost">
+            <span>Inisiasi Kontak</span>
+            <span>🚀</span>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         HERO SECTION
+         ==================================================================== -->
+    <main>
+      <section class="hero-section" id="beranda">
+        <div class="container hero-grid">
+          
+          <!-- Hero Intro Copy -->
+          <div class="hero-text-content">
+            <div class="status-pill-badge">
+              <span class="pulsing-status-dot"></span>
+              <span>MISSION READY • OPEN FOR PROJECTS</span>
+            </div>
+
+            <h1 class="hero-title">
+              Membangun Pengalaman Web Antara <span class="gradient-text-cyan">Logika Kode</span> &amp; Keindahan Semesta.
+            </h1>
+
+            <p class="hero-bio">
+              Halo! Saya <strong>Yogi Fernando</strong>, seorang Web Developer dengan keahlian utama di <strong>Laravel, PHP, React, JavaScript, Tailwind CSS, dan MySQL</strong>. Saya gemar mengeksplorasi teknologi dan astronomi, membangun website yang <strong>cepat, fungsional, dan mudah dipahami</strong> dengan arsitektur kode yang terstruktur rapi.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#proyek" class="btn-cosmic-glow">
+                <span>Jelajahi Proyek Saya</span>
+                <span>↓</span>
+              </a>
+              <a href="#orbit-keahlian" class="btn-outline-starlight">
+                <span>Orbit Interaktif 🪐</span>
+              </a>
+              <button id="btn-trigger-meteor" class="btn-meteor-spark" title="Luncurkan Komet di Langit">
+                <span>✨ Luncurkan Komet</span>
+              </button>
+            </div>
+
+            <!-- Quick Telemetry Stats -->
+            <div class="hero-quick-stats">
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Bebas Biaya Hosting (GitHub Pages)</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">Fullstack</span>
+                <span class="stat-label">Laravel, PHP, React &amp; MySQL</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">Modern UI</span>
+                <span class="stat-label">Tailwind CSS &amp; JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Developer Profile Card -->
+          <div class="hero-avatar-card">
+            <div class="avatar-halo-wrapper">
+              <div class="avatar-orbit-ring" aria-hidden="true"></div>
+              <div class="avatar-orbit-ring-reverse" aria-hidden="true"></div>
+              
+              <!-- Foto Developer -->
+              <img 
+                id="developer-avatar" 
+                src="assets/profile.svg" 
+                alt="Foto Profil Yogi Fernando" 
+                class="developer-portrait-img"
+              />
+            </div>
+
+            <div class="avatar-meta-info">
+              <h2 class="dev-name">Yogi Fernando</h2>
+              <span class="dev-role-badge">Web Developer • Laravel, React &amp; MySQL</span>
+              
+              <div class="avatar-action-bar">
+                <!-- Tombol ini otomatis tersembunyi untuk umum, hanya muncul saat Yogi login -->
+                <button id="btn-custom-avatar-guide" class="btn-change-photo-modal" title="Pasang & Crop Foto Profil (Khusus Admin)">
+                  <span>📷 Pasang / Crop Foto Saya</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           INTERACTIVE SOLAR SYSTEM (ORBIT KEAHLIAN & TEKNOLOGI)
+           ==================================================================== -->
+      <section class="solar-system-section" id="orbit-keahlian">
+        <div class="container">
+          <div class="section-header-block">
+            <span class="section-tag">SIMULASI ORBIT KEAHLIAN</span>
+            <h2 class="section-title">Teknologi Mengorbit di Sekitar Sol</h2>
+            <p class="section-subtitle">
+              Klik planet untuk membuka <em>HUD Telemetri</em> keahlian Laravel, PHP, React, JavaScript, Tailwind CSS, dan MySQL.
+            </p>
+          </div>
+
+          <!-- The Interactive Planetary Stage -->
+          <div class="solar-stage-wrapper">
+            <div class="solar-stage" id="solar-stage">
+              
+              <!-- Center Sun: Core Engine -->
+              <div class="solar-core" data-planet="core" title="Klik: Solusi Masalah & Logika Coding">
+                <span class="core-label">SOL<br>CORE</span>
+              </div>
+
+              <!-- Track 1 & Planet 1: React & JavaScript -->
+              <div class="orbit-track orbit-track-1"></div>
+              <div class="orbit-spinner spinner-1">
+                <div class="orbit-planet planet-frontend" data-planet="frontend" title="Kepler-Front (React & JavaScript)">
+                  <div class="planet-content-wrap">
+                    <span class="planet-tooltip">React &amp; JS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 2 & Planet 2: Laravel & PHP -->
+              <div class="orbit-track orbit-track-2"></div>
+              <div class="orbit-spinner spinner-2">
+                <div class="orbit-planet planet-backend" data-planet="backend" title="Titan-Back (Laravel & PHP)">
+                  <div class="planet-content-wrap">
+                    <span class="planet-tooltip">Laravel &amp; PHP</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 3 & Planet 3: MySQL Database -->
+              <div class="orbit-track orbit-track-3"></div>
+              <div class="orbit-spinner spinner-3">
+                <div class="orbit-planet planet-database" data-planet="database" title="Ares-Data (MySQL Database)">
+                  <div class="planet-content-wrap">
+                    <span class="planet-tooltip">MySQL Database</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Track 4 & Planet 4: Tailwind CSS & Git -->
+              <div class="orbit-track orbit-track-4"></div>
+              <div class="orbit-spinner spinner-4">
+                <div class="orbit-planet planet-devops" data-planet="devops" title="Jovian-Style (Tailwind CSS & Workflow)">
+                  <div class="planet-content-wrap">
+                    <div class="mini-satellite" title="GitHub Pages Orbit"></div>
+                    <span class="planet-tooltip">Tailwind &amp; Git</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Orbit Interactive Action Buttons -->
+          <div class="solar-controls-bar">
+            <button id="btn-warp-speed" class="btn-solar-action">
+              <span>🚀 Warp Speed (3x)</span>
+            </button>
+            <button id="btn-pause-orbit" class="btn-solar-action">
+              <span>⏸ Hentikan Putaran</span>
+            </button>
+            <button class="btn-solar-action" onclick="showPlanetTelemetry('core')">
+              <span>☀️ Buka Sol Core</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PORTFOLIO & DOCUMENTATION SHOWCASE
+           ==================================================================== -->
+      <section class="projects-section" id="proyek">
+        <div class="container">
+          <div class="section-header-block">
+            <span class="section-tag">DOKUMENTASI HASIL KARYA</span>
+            <h2 class="section-title">Portofolio Website yang Pernah Saya Bangun</h2>
+            <p class="section-subtitle">
+              Setiap proyek dilengkapi dokumentasi tangkapan layar gambar, arsitektur fitur, tantangan teknis, dan tautan repositori.
+            </p>
+          </div>
+
+          <!-- Dynamic Projects Grid Container -->
+          <div class="projects-grid" id="portfolio-grid">
+            <!-- Dirender secara dinamis dari data/projects-data.js + CRUD storage -->
+          </div>
+
+          <!-- Link ke Halaman Penuh Portofolio -->
+          <div style="text-align: center; margin-top: 3.5rem;">
+            <a href="projects.html" class="btn-cosmic-glow">
+              <span>Buka Halaman Lengkap Dokumentasi Proyek ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           STANDAR KUALITAS SECTION
+           ==================================================================== -->
+      <section class="promise-section" id="prinsip">
+        <div class="container">
+          <div class="section-header-block">
+            <span class="section-tag">STANDAR KUALITAS TINGGI</span>
+            <h2 class="section-title">Standar Kualitas &amp; Arsitektur Bersih</h2>
+            <p class="section-subtitle">
+              Komitmen saya dalam setiap baris kode: performa tinggi, struktur rapi, dan pengalaman visual yang nyaman bagi pengguna nyata.
+            </p>
+          </div>
+
+          <div class="promise-card-container">
+            <div class="promise-card">
+              <div class="promise-icon-wrap">⚡</div>
+              <h3 class="promise-title">Nol Biaya Hosting</h3>
+              <p class="promise-text">
+                Dirancang khusus untuk di-deploy ke <strong>GitHub Pages</strong> tanpa biaya sepeser pun. Cukup git push dan portofolio Anda langsung aktif dengan SSL gratis.
+              </p>
+            </div>
+
+            <div class="promise-card">
+              <div class="promise-icon-wrap">⚙️</div>
+              <h3 class="promise-title">Backend Tangguh</h3>
+              <p class="promise-text">
+                Implementasi <strong>Laravel &amp; PHP</strong> dengan pemanfaatan Eloquent ORM, validasi ketat, arsitektur MVC, serta manajemen basis data <strong>MySQL</strong> yang teroptimasi.
+              </p>
+            </div>
+
+            <div class="promise-card">
+              <div class="promise-icon-wrap">🎨</div>
+              <h3 class="promise-title">Frontend Responsif</h3>
+              <p class="promise-text">
+                Kombinasi <strong>React, JavaScript, dan Tailwind CSS</strong> untuk menghasilkan antarmuka interaktif yang ringan, fleksibel di semua ukuran layar, dan modern.
+              </p>
+            </div>
+
+            <div class="promise-card">
+              <div class="promise-icon-wrap">📂</div>
+              <h3 class="promise-title">Mudah Update Gambar &amp; CRUD</h3>
+              <p class="promise-text">
+                Tersedia konsol admin rahasia untuk mengunggah screenshot, mengedit deskripsi proyek, dan memotong foto profil langsung dari browser.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           CONTACT / MISSION CONTROL SECTION
+           ==================================================================== -->
+      <section class="contact-section" id="kontak">
+        <div class="container">
+          <div class="contact-card-box">
+            
+            <div class="contact-info-col">
+              <span class="section-tag">HUBUNGI SAYA</span>
+              <h3>Mari Berkolaborasi dalam Proyek Berikutnya</h3>
+              <p>
+                Tertarik membuat website modern dengan Laravel, React, Tailwind CSS, atau berdiskusi mengenai proyek kolaborasi? Kirimkan pesan melalui kanal berikut:
+              </p>
+
+              <div class="contact-channels-list">
+                <div class="channel-item">
+                  <div class="channel-icon">📧</div>
+                  <div>
+                    <strong style="display:block;">Email Langsung</strong>
+                    <span style="color:var(--color-cyan);">yogifernando885@gmail.com</span>
+                  </div>
+                </div>
+
+                <div class="channel-item">
+                  <div class="channel-icon">🐙</div>
+                  <div>
+                    <strong style="display:block;">GitHub Profile</strong>
+                    <a href="https://github.com/yogif" target="_blank" rel="noopener noreferrer" style="color:var(--color-cyan);">github.com/yogif</a>
+                  </div>
+                </div>
+              </div>
+
+              <button id="btn-copy-email" class="btn-outline-starlight">
+                <span>📋 Salin Alamat Email</span>
+              </button>
+            </div>
+
+            <div class="contact-form-col">
+              <form id="mission-contact-form">
+                <div class="form-group">
+                  <label for="sender-name">Nama Lengkap</label>
+                  <input type="text" id="sender-name" class="cosmic-input" placeholder="Contoh: Budi Santoso" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="sender-email">Email Anda</label>
+                  <input type="email" id="sender-email" class="cosmic-input" placeholder="nama@perusahaan.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="sender-message">Deskripsi Proyek atau Pesan</label>
+                  <textarea id="sender-message" class="cosmic-textarea" placeholder="Ceritakan ide proyek atau kebutuhan website Anda..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-cosmic-glow" style="width: 100%; justify-content: center;">
+                  <span>Kirim Transmisi Pesan 🚀</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="cosmic-footer">
+      <div class="container footer-inner">
+        <div class="footer-credits">
+          <p>© 2026 <strong>Yogi Fernando</strong>. Dibuat dengan logika murni dan estetika kosmik.</p>
+        </div>
+
+        <div class="zero-cost-badge">
+          <span>● Hosted with GitHub Pages (Zero Cost)</span>
+        </div>
+
+        <div>
+          <a href="#beranda" class="btn-outline-starlight" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+            <span>Kembali ke Atas ↑</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ====================================================================
+       CASE STUDY & IMAGE LIGHTBOX MODAL (Native <dialog>)
+       ==================================================================== -->
+  <dialog id="project-lightbox-dialog" aria-labelledby="modal-project-title">
+    <div class="modal-case-study-frame">
+      
+      <div class="modal-header-bar">
+        <div class="modal-title-group">
+          <h3 id="modal-project-title">Judul Proyek</h3>
+        </div>
+        <button id="modal-close-btn" class="btn-close-modal" aria-label="Tutup Dialog">✕</button>
+      </div>
+
+      <div class="modal-body-content">
+        <div class="modal-image-showcase">
+          <button id="modal-prev-img" class="gallery-nav-btn gallery-nav-prev" aria-label="Gambar Sebelumnya">‹</button>
+          <div class="modal-img-viewport">
+            <img id="modal-main-image" src="" alt="Pratinjau Dokumentasi Proyek">
+          </div>
+          <button id="modal-next-img" class="gallery-nav-btn gallery-nav-next" aria-label="Gambar Berikutnya">›</button>
+          <div class="modal-caption-text" id="modal-image-caption">Keterangan gambar dokumentasi</div>
+        </div>
+
+        <div class="modal-thumbnails-bar" id="modal-thumbnails-container"></div>
+        <p style="font-size: 0.85rem; color: var(--starlight-muted); margin-bottom: 0.8rem;" id="modal-project-year"></p>
+
+        <div class="case-study-block">
+          <h4>Ringkasan &amp; Latar Belakang</h4>
+          <p id="modal-project-overview" style="color: var(--starlight-body); line-height: 1.7;"></p>
+        </div>
+
+        <div class="metrics-hud-grid" id="modal-project-metrics"></div>
+
+        <div class="case-study-block">
+          <h4>Fitur Utama yang Diimplementasikan</h4>
+          <ul class="features-bullet-list" id="modal-features-list"></ul>
+        </div>
+
+        <div class="case-study-block">
+          <h4>Tantangan Teknis &amp; Solusi Rekayasa</h4>
+          <div id="modal-challenges-list"></div>
+        </div>
+
+        <div class="case-study-block">
+          <h4>Teknologi &amp; Tools yang Digunakan</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="modal-tech-tags"></div>
+        </div>
+
+        <div class="modal-footer-actions">
+          <a id="modal-gh-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline-starlight">
+            <span>Lihat Repositori GitHub ↗</span>
+          </a>
+          <a id="modal-live-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-cosmic-glow">
+            <span>Kunjungi Website Live ↗</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </dialog>
+
+  <!-- ====================================================================
+       PLANETARY TELEMETRY HUD DIALOG
+       ==================================================================== -->
+  <dialog id="planet-hud-dialog" aria-labelledby="hud-planet-name">
+    <div class="planet-hud-dialog-frame">
+      <div class="hud-top-header">
+        <span class="planet-indicator-dot" id="hud-planet-indicator"></span>
+        <div>
+          <h3 class="hud-planet-title" id="hud-planet-name">Sol Core</h3>
+          <span class="hud-planet-category" id="hud-planet-type">Inti Logika</span>
+        </div>
+        <button id="hud-close-btn" class="btn-close-modal" style="margin-left: auto;">✕</button>
+      </div>
+
+      <p id="hud-planet-desc" style="color: var(--starlight-body); line-height: 1.6; font-size: 0.95rem;"></p>
+
+      <h4 style="font-size: 0.95rem; margin-top: 1.25rem; color: var(--starlight-pure);">Keahlian &amp; Penguasaan:</h4>
+      <ul class="skills-hud-list" id="hud-planet-skills"></ul>
+
+      <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+        <button onclick="document.getElementById('planet-hud-dialog').close()" class="btn-outline-starlight" style="font-size: 0.85rem; padding: 0.5rem 1.1rem;">
+          Tutup Telemetri
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ====================================================================
+       INTERACTIVE PHOTO CROPPER MODAL DIALOG
+       ==================================================================== -->
+  <dialog id="avatar-guide-dialog">
+    <div class="planet-hud-dialog-frame" style="width: 580px;">
+      <div class="hud-top-header">
+        <span class="planet-indicator-dot" style="background:#38bdf8;"></span>
+        <div>
+          <h3 class="hud-planet-title">Pasang &amp; Potong Foto (Crop)</h3>
+          <span class="hud-planet-category">KHUSUS ADMIN</span>
+        </div>
+        <button id="avatar-guide-close" class="btn-close-modal" style="margin-left: auto;">✕</button>
+      </div>
+
+      <p style="margin-bottom: 0.75rem; color: var(--starlight-body); font-size: 0.92rem;">
+        Pilih file foto dari perangkat Anda untuk dipotong secara presisi dalam rasio lingkaran profil:
+      </p>
+
+      <input type="file" id="avatar-file-input" accept="image/*" class="cosmic-input" style="padding: 0.55rem; font-size: 0.85rem; margin-bottom: 1rem;">
+
+      <div id="cropper-workspace" class="crop-modal-content" style="display: none;">
+        <div class="cropper-stage-box">
+          <canvas id="crop-canvas" width="320" height="320" title="Klik dan geser untuk mengatur posisi wajah"></canvas>
+        </div>
+
+        <div class="crop-controls-row">
+          <div class="crop-slider-wrap">
+            <span>🔎 Zoom:</span>
+            <input type="range" id="crop-zoom-slider" min="0.5" max="3" step="0.05" value="1">
+          </div>
+          <p class="crop-hint-text">💡 <strong>Tips:</strong> Klik &amp; geser (drag) foto untuk menggeser posisi wajah ke tengah lingkaran.</p>
+        </div>
+
+        <div class="crop-buttons-row">
+          <button id="btn-apply-crop" class="btn-cosmic-glow" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">
+            <span>✂️ Potong &amp; Terapkan Foto</span>
+          </button>
+          <a id="btn-download-cropped" href="#" class="btn-outline-starlight" style="display: none; padding: 0.6rem 1.25rem; font-size: 0.88rem;">
+            <span>💾 Unduh profile.jpg</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-space); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.78rem; color: var(--starlight-muted);">Foto otomatis tersimpan di browser Anda.</span>
+        <button onclick="document.getElementById('avatar-guide-dialog').close()" class="btn-outline-starlight" style="padding: 0.45rem 1rem; font-size: 0.82rem;">
+          Selesai
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ====================================================================
+       STEALTH ADMIN LOGIN DIALOG (HANYA MUNCUL DENGAN TRIGGER RAHASIA)
+       ==================================================================== -->
+  <dialog id="admin-login-dialog">
+    <div class="planet-hud-dialog-frame" style="width: 440px;">
+      <div class="hud-top-header">
+        <span class="planet-indicator-dot" style="background:#10b981;"></span>
+        <div>
+          <h3 class="hud-planet-title">Akses Mission Command</h3>
+          <span class="hud-planet-category">AUTHENTICATION</span>
+        </div>
+        <button id="admin-login-close" class="btn-close-modal" style="margin-left: auto;">✕</button>
+      </div>
+
+      <p style="font-size: 0.9rem; color: var(--starlight-muted); margin-bottom: 1.25rem;">
+        Masukkan kata sandi admin Anda untuk mengaktifkan fitur CRUD proyek dan pemotong foto:
+      </p>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="admin-password-input">Kata Sandi Admin</label>
+          <input 
+            type="password" 
+            id="admin-password-input" 
+            class="cosmic-input" 
+            placeholder="Masukkan kata sandi..." 
+            autocomplete="current-password"
+            required
+          >
+        </div>
+        
+        <p id="admin-login-error" style="color: #f87171; font-size: 0.82rem; margin-bottom: 1rem; display: none;"></p>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="submit" class="btn-cosmic-glow" style="padding: 0.6rem 1.4rem;">
+            <span>Masuk ke Mode Admin 🚀</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ====================================================================
+       PROJECT CRUD MODAL DIALOG (TAMBAH / EDIT PROYEK)
+       ==================================================================== -->
+  <dialog id="project-crud-dialog">
+    <div class="planet-hud-dialog-frame" style="width: 720px; max-height: 90vh; overflow-y: auto;">
+      <div class="hud-top-header">
+        <span class="planet-indicator-dot" style="background:#38bdf8;"></span>
+        <div>
+          <h3 class="hud-planet-title" id="crud-modal-title">Tambah / Edit Proyek</h3>
+          <span class="hud-planet-category">MANAJEMEN PROYEK</span>
+        </div>
+        <button id="crud-close-btn" class="btn-close-modal" style="margin-left: auto;">✕</button>
+      </div>
+
+      <form id="project-crud-form">
+        <div class="form-group">
+          <label for="crud-title">Nama / Judul Proyek *</label>
+          <input type="text" id="crud-title" class="cosmic-input" placeholder="Contoh: Sistem POS Kasir Toko" required>
+        </div>
+
+        <div class="form-group">
+          <label for="crud-subtitle">Ringkasan Singkat (1 Kalimat) *</label>
+          <input type="text" id="crud-subtitle" class="cosmic-input" placeholder="Contoh: Aplikasi kasir berbasis Laravel, MySQL & Tailwind CSS" required>
+        </div>
+
+        <div class="form-group">
+          <label for="crud-overview">Deskripsi Lengkap / Latar Belakang Proyek</label>
+          <textarea id="crud-overview" class="cosmic-textarea" style="min-height: 80px;" placeholder="Jelaskan tujuan dan fungsi website yang telah Anda bangun..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="crud-image-file">Upload Foto Screenshot Dokumentasi</label>
+          <input type="file" id="crud-image-file" accept="image/*" class="cosmic-input" style="padding: 0.5rem; font-size: 0.85rem;">
+          <img id="crud-img-preview" src="" alt="Pratinjau Screenshot" style="width: 100%; max-height: 200px; object-fit: contain; margin-top: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-space); display: none;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="crud-tags">Teknologi Digunakan (Pisahkan Koma)</label>
+            <input type="text" id="crud-tags" class="cosmic-input" placeholder="Laravel, PHP, MySQL, Tailwind CSS">
+          </div>
+          <div class="form-group">
+            <label for="crud-status">Status Proyek</label>
+            <input type="text" id="crud-status" class="cosmic-input" placeholder="Production Ready / Selesai">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="crud-year">Tahun Pembuatan</label>
+            <input type="text" id="crud-year" class="cosmic-input" placeholder="2026">
+          </div>
+          <div class="form-group">
+            <label for="crud-github">Tautan GitHub Repository (Opsional)</label>
+            <input type="url" id="crud-github" class="cosmic-input" placeholder="https://github.com/yogif/nama-repo">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="crud-live">Tautan Live Website (Opsional)</label>
+          <input type="url" id="crud-live" class="cosmic-input" placeholder="https://website-kamu.com">
+        </div>
+
+        <div class="form-group">
+          <label for="crud-features">Fitur Utama (Satu Fitur per Baris)</label>
+          <textarea id="crud-features" class="cosmic-textarea" style="min-height: 70px;" placeholder="Login & Registrasi User Multi-role&#10;Manajemen Transaksi Kasir Real-time&#10;Cetak Struk Nota PDF"></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" onclick="document.getElementById('project-crud-dialog').close()" class="btn-outline-starlight" style="padding: 0.6rem 1.25rem;">
+            Batal
+          </button>
+          <button type="submit" class="btn-cosmic-glow" style="padding: 0.6rem 1.5rem;">
+            <span>Simpan Proyek ✨</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Scripts -->
+  <script src="data/projects-data.js"></script>
+  <script src="js/audio-synth.js"></script>
+  <script src="js/starfield.js"></script>
+  <script src="js/solar-system.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
