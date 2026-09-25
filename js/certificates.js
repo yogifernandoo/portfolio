@@ -2,6 +2,8 @@
  * ==============================================================================
  * CERTIFICATES & ACHIEVEMENTS ENGINE — YOGI FERNANDO
  * ==============================================================================
+ * Mengatur render sertifikat di halaman utama (index.html) dan halaman sertifikat (certificates.html),
+ * filter kategori, serta modal lightbox gambar beresolusi tinggi.
  */
 
 (function () {
@@ -13,10 +15,12 @@
 
   function initCertificates() {
     renderCertificatesGrid();
+    renderHomepageCertPreview();
     setupCertificateFilter();
     setupCertificateModal();
   }
 
+  // Render di Halaman certificates.html
   function renderCertificatesGrid(filterCategory = "all") {
     const grid = document.getElementById("certificates-grid");
     if (!grid) return;
@@ -62,7 +66,7 @@
             alt="${escapeHTML(item.title)}" 
             class="cert-img-cover" 
             loading="lazy"
-            onload="document.getElementById('placeholder-${escapeHTML(item.id)}') ? document.getElementById('placeholder-${escapeHTML(item.id)}').style.display='none' : null"
+            onload="const ph = document.getElementById('placeholder-${escapeHTML(item.id)}'); if(ph) ph.style.display='none';"
             onerror="this.style.display='none'"
           />
           <span class="cert-floating-badge ${badgeClass}">${escapeHTML(item.badge)}</span>
@@ -101,6 +105,61 @@
     });
   }
 
+  // Render di Beranda (index.html) pada container #cert-preview-grid
+  function renderHomepageCertPreview() {
+    const previewGrid = document.getElementById("cert-preview-grid");
+    if (!previewGrid) return;
+
+    const certs = getAllCertificates();
+    previewGrid.innerHTML = "";
+
+    certs.forEach((item) => {
+      const card = document.createElement("article");
+      card.className = "cert-preview-card";
+      card.dataset.id = item.id;
+
+      const isAward = item.badge && item.badge.includes("Juara");
+      const badgeClass = isAward ? "cert-badge-gold" : "cert-badge-blue";
+
+      const tags = (item.skills || [])
+        .slice(0, 3)
+        .map((s) => `<span class="tag-pill">${escapeHTML(s)}</span>`)
+        .join("");
+
+      card.innerHTML = `
+        <div class="cert-preview-card-img-wrap">
+          <img 
+            src="${escapeHTML(item.image)}" 
+            alt="${escapeHTML(item.title)}" 
+            loading="lazy"
+            onerror="this.parentElement.style.display='none'"
+          />
+        </div>
+        <div class="cert-preview-body">
+          <span class="cert-preview-badge ${badgeClass}">${escapeHTML(item.badge)}</span>
+          <h3 class="cert-preview-title">${escapeHTML(item.title)}</h3>
+          <p class="cert-preview-meta">${escapeHTML(item.issuer)} • ${escapeHTML(item.year)}</p>
+          <p class="cert-preview-desc">${escapeHTML(item.subtitle || item.overview || '')}</p>
+          <div class="cert-preview-skills">
+            ${tags}
+          </div>
+          <div class="cert-preview-action">
+            <span>Lihat Sertifikat &amp; Bukti ↗</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        openCertModal(item.id);
+      });
+
+      previewGrid.appendChild(card);
+    });
+  }
+
   function setupCertificateFilter() {
     const filterButtons = document.querySelectorAll(".cert-filter-btn");
     filterButtons.forEach((btn) => {
@@ -122,13 +181,20 @@
     const dialog = document.getElementById("certificate-lightbox-dialog");
     if (!dialog) return;
 
-    document.getElementById("modal-cert-title").textContent = item.title;
-    document.getElementById("modal-cert-issuer").textContent = `${item.issuer} • ${item.year}`;
-    document.getElementById("modal-cert-overview").textContent = item.overview || "";
+    const titleEl = document.getElementById("modal-cert-title");
+    if (titleEl) titleEl.textContent = item.title;
+
+    const issuerEl = document.getElementById("modal-cert-issuer");
+    if (issuerEl) issuerEl.textContent = `${item.issuer} • ${item.year}`;
+
+    const overviewEl = document.getElementById("modal-cert-overview");
+    if (overviewEl) overviewEl.textContent = item.overview || "";
 
     const badgeEl = document.getElementById("modal-cert-badge");
     if (badgeEl) {
       badgeEl.textContent = item.badge || "";
+      const isAward = item.badge && item.badge.includes("Juara");
+      badgeEl.className = `cert-floating-badge ${isAward ? "cert-badge-gold" : "cert-badge-blue"}`;
     }
 
     const imgEl = document.getElementById("modal-cert-image");
@@ -143,8 +209,10 @@
         imgEl.style.display = "none";
         if (fallbackBox) {
           fallbackBox.style.display = "flex";
-          document.getElementById("modal-fallback-icon").textContent = item.fallbackIcon || "🏆";
-          document.getElementById("modal-fallback-title").textContent = item.title;
+          const iconEl = document.getElementById("modal-fallback-icon");
+          if (iconEl) iconEl.textContent = item.fallbackIcon || "🏆";
+          const fTitleEl = document.getElementById("modal-fallback-title");
+          if (fTitleEl) fTitleEl.textContent = item.title;
         }
       };
     }
@@ -168,7 +236,7 @@
 
     const linkedinLink = document.getElementById("modal-cert-linkedin");
     if (linkedinLink) {
-      linkedinLink.href = "https://www.linkedin.com/in/yogi-fernando1";
+      linkedinLink.href = item.verifyUrl || "https://www.linkedin.com/in/yogi-fernando1";
     }
 
     if (typeof dialog.showModal === "function") {
