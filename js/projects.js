@@ -13,7 +13,7 @@
   let currentProject = null;
   let currentImageIndex = 0;
   let editingProjectId = null;
-  let crudUploadedImageBase64 = null;
+  let crudUploadedImages = []; // array of { src: base64, caption: '' }
 
   // Dapatkan data proyek (gabungan default + storage kustom)
   function getAllProjects() {
@@ -184,17 +184,16 @@
   // ============================================================================
   function openProjectCrudModal(projectId = null) {
     editingProjectId = projectId;
-    crudUploadedImageBase64 = null;
+    crudUploadedImages = [];
 
     const dialog = document.getElementById("project-crud-dialog");
     const titleEl = document.getElementById("crud-modal-title");
     const form = document.getElementById("project-crud-form");
-    const imgPreview = document.getElementById("crud-img-preview");
 
     if (!dialog || !form) return;
 
     if (projectId) {
-      // Mode Edit
+      // Mode Edit — muat data yang sudah ada
       titleEl.textContent = "✏️ Edit Dokumentasi Proyek";
       const projects = getAllProjects();
       const item = projects.find((p) => p.id === projectId);
@@ -208,22 +207,67 @@
         document.getElementById("crud-github").value = item.githubUrl || "";
         document.getElementById("crud-live").value = item.liveUrl || "";
         document.getElementById("crud-features").value = (item.features || []).join("\n");
-        
-        crudUploadedImageBase64 = item.bannerImage || null;
-        if (imgPreview && item.bannerImage) {
-          imgPreview.src = item.bannerImage;
-          imgPreview.style.display = "block";
+
+        // Muat gambar yang sudah ada ke dalam preview gallery
+        if (Array.isArray(item.images) && item.images.length > 0) {
+          crudUploadedImages = item.images.map((img) => ({ src: img.src, caption: img.caption || "" }));
+        } else if (item.bannerImage) {
+          crudUploadedImages = [{ src: item.bannerImage, caption: `Dokumentasi Utama ${item.title}` }];
         }
+        renderCrudGalleryPreview();
       }
     } else {
       // Mode Tambah Baru
       titleEl.textContent = "➕ Tambah Proyek Baru";
       form.reset();
-      if (imgPreview) imgPreview.style.display = "none";
+      renderCrudGalleryPreview();
     }
 
     if (typeof dialog.showModal === "function") dialog.showModal();
     else dialog.setAttribute("open", "true");
+  }
+
+  function renderCrudGalleryPreview() {
+    const container = document.getElementById("crud-gallery-preview");
+    if (!container) return;
+    if (crudUploadedImages.length === 0) {
+      container.innerHTML = "";
+      return;
+    }
+    container.innerHTML = crudUploadedImages.map((img, idx) => `
+      <div class="crud-thumb-card" data-idx="${idx}">
+        <img src="${img.src}" alt="Foto ${idx + 1}" class="crud-thumb-img">
+        <div class="crud-thumb-meta">
+          <input
+            class="crud-thumb-caption cosmic-input"
+            type="text"
+            placeholder="Keterangan foto (opsional)"
+            value="${escapeHTML(img.caption || '')}"
+            data-caption-idx="${idx}"
+            style="font-size:0.78rem; padding:0.35rem 0.5rem;"
+          >
+        </div>
+        <button type="button" class="crud-thumb-remove" data-remove-idx="${idx}" title="Hapus foto ini">✕</button>
+        <span class="crud-thumb-number">${idx + 1}</span>
+      </div>
+    `).join("");
+
+    container.querySelectorAll(".crud-thumb-remove").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const i = parseInt(btn.dataset.removeIdx, 10);
+        crudUploadedImages.splice(i, 1);
+        renderCrudGalleryPreview();
+      });
+    });
+
+    container.querySelectorAll(".crud-thumb-caption").forEach((input) => {
+      input.addEventListener("input", () => {
+        const i = parseInt(input.dataset.captionIdx, 10);
+        if (crudUploadedImages[i]) {
+          crudUploadedImages[i].caption = input.value;
+        }
+      });
+    });
   }
 
   function setupCrudForm() {
@@ -231,7 +275,6 @@
     const form = document.getElementById("project-crud-form");
     const closeBtn = document.getElementById("crud-close-btn");
     const fileInput = document.getElementById("crud-image-file");
-    const imgPreview = document.getElementById("crud-img-preview");
 
     if (closeBtn && dialog) {
       closeBtn.addEventListener("click", () => {
@@ -240,20 +283,60 @@
       });
     }
 
-    // Baca upload screenshot ke Base64
-    if (fileInput && imgPreview) {
+    // Baca multiple screenshot ke Base64
+    if (fileInput) {
       fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (file) {
+        const files = Array.from(e.target.files);
+        if (!files.length) return;
+        let loaded = 0;
+        const newImages = [];
+        files.forEach((file, i) => {
           const reader = new FileReader();
           reader.onload = (evt) => {
-            crudUploadedImageBase64 = evt.target.result;
-            imgPreview.src = evt.target.result;
-            imgPreview.style.display = "block";
+            newImages[i] = { src: evt.target.result, caption: file.name.replace(/\.[^.]+$/, "") };
+            loaded++;
+            if (loaded === files.length) {
+              crudUploadedImages = crudUploadedImages.concat(newImages.filter(Boolean));
+              renderCrudGalleryPreview();
+              showToastMessage(`✅ ${files.length} foto berhasil dimuat!`);
+            }
           };
           reader.readAsDataURL(file);
-        }
+        });
+        // Reset input agar file yang sama bisa dipilih ulang
+        e.target.value = "";
       });
+
+      // Drag & Drop support
+      const dropzone = document.getElementById("crud-dropzone-label");
+      if (dropzone) {
+        dropzone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropzone.classList.add("drag-over");
+        });
+        dropzone.addEventListener("dragleave", () => dropzone.classList.remove("drag-over"));
+        dropzone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          dropzone.classList.remove("drag-over");
+          const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith("image/"));
+          if (!files.length) return;
+          let loaded = 0;
+          const newImages = [];
+          files.forEach((file, i) => {
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+              newImages[i] = { src: evt.target.result, caption: file.name.replace(/\.[^.]+$/, "") };
+              loaded++;
+              if (loaded === files.length) {
+                crudUploadedImages = crudUploadedImages.concat(newImages.filter(Boolean));
+                renderCrudGalleryPreview();
+                showToastMessage(`✅ ${files.length} foto berhasil dimuat via drag & drop!`);
+              }
+            };
+            reader.readAsDataURL(file);
+          });
+        });
+      }
     }
 
     // Submit Form (Simpan / Update)
@@ -275,7 +358,16 @@
         const features = featuresStr ? featuresStr.split("\n").map((f) => f.trim()).filter(Boolean) : [];
 
         const projects = getAllProjects();
-        const bannerImage = crudUploadedImageBase64 || "assets/projects/project1-ecommerce.svg";
+
+        // Bangun array gambar dari crudUploadedImages
+        const savedImages = crudUploadedImages.length > 0
+          ? crudUploadedImages.map((img, idx) => ({
+              src: img.src,
+              caption: img.caption || `Dokumentasi ${idx + 1} — ${title}`
+            }))
+          : [{ src: "assets/projects/project1-ecommerce.svg", caption: `Dokumentasi Utama ${title}` }];
+
+        const bannerImage = savedImages[0].src;
 
         if (editingProjectId) {
           // Update yang sudah ada
@@ -293,12 +385,7 @@
               liveUrl,
               features,
               bannerImage,
-              images: [
-                {
-                  src: bannerImage,
-                  caption: `Dokumentasi Utama ${title}`
-                }
-              ]
+              images: savedImages
             };
           }
         } else {
@@ -316,12 +403,7 @@
             liveUrl,
             features,
             bannerImage,
-            images: [
-              {
-                src: bannerImage,
-                caption: `Dokumentasi Utama ${title}`
-              }
-            ],
+            images: savedImages,
             metrics: [
               { label: "Status", value: "Active" }
             ],

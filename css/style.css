@@ -1407,7 +1407,26 @@ dialog::backdrop {
   align-items: center;
   justify-content: center;
   background: #020307;
+  position: relative;
 }
+
+.gallery-counter-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(6, 10, 24, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-active);
+  color: var(--starlight-pure);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 6;
+}
+
 
 .modal-img-viewport img {
   width: 100%;
@@ -1983,4 +2002,237 @@ body.admin-logged-in .cosmic-header {
   max-width: 260px;
 }
 
+/* CRUD Multi-Image Gallery Manager */
+.crud-gallery-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.crud-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.85rem;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 0.5rem;
+  background: rgba(4, 7, 16, 0.7);
+  border: 1px solid var(--border-space);
+  border-radius: var(--radius-md);
+}
+
+.crud-image-card {
+  background: #0b1122;
+  border: 1px solid var(--border-space);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.crud-image-card.is-cover {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 10px var(--color-cyan-glow);
+}
+
+.crud-card-img-wrap {
+  width: 100%;
+  height: 110px;
+  background: #020409;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.crud-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.crud-img-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(6, 10, 24, 0.85);
+  border: 1px solid var(--border-space);
+  color: var(--starlight-pure);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.crud-btn-del-img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.85);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  border: none;
+}
+
+.crud-btn-del-img:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.crud-caption-input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-space);
+  border-radius: 4px;
+  color: var(--starlight-heading);
+  font-size: 0.75rem;
+  font-family: inherit;
+}
+
+.crud-caption-input:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+}
+
+/* ==============================================================================
+   MULTI-IMAGE UPLOAD — DROPZONE & GALLERY PREVIEW
+   ============================================================================== */
+
+/* Hidden file input trick */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Drag & Drop Zone */
+.crud-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.4rem 1rem;
+  border: 2px dashed var(--color-cyan);
+  border-radius: var(--radius-md);
+  background: rgba(56, 189, 248, 0.04);
+  color: var(--text-secondary);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  margin-top: 0.4rem;
+}
+
+.crud-dropzone:hover,
+.crud-dropzone.drag-over {
+  border-color: var(--color-violet);
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--starlight-heading);
+}
+
+.crud-dropzone-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.crud-dropzone span,
+.crud-dropzone small {
+  pointer-events: none;
+}
+
+.crud-dropzone small {
+  font-size: 0.78rem;
+  opacity: 0.7;
+}
+
+/* Gallery Preview Grid */
+.crud-gallery-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+/* Individual Thumbnail Card */
+.crud-thumb-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-space);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s;
+}
+
+.crud-thumb-card:hover {
+  border-color: var(--color-cyan);
+}
+
+.crud-thumb-img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  display: block;
+}
+
+.crud-thumb-meta {
+  padding: 0.4rem 0.45rem;
+}
+
+/* Remove Button */
+.crud-thumb-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.85);
+  border: none;
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  z-index: 2;
+}
+
+.crud-thumb-remove:hover {
+  background: #dc2626;
+  transform: scale(1.15);
+}
+
+/* Photo Number Badge */
+.crud-thumb-number {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(9, 14, 28, 0.75);
+  color: var(--color-cyan);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  line-height: 1.5;
+}
 
