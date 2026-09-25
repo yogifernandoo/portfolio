@@ -15,14 +15,20 @@
   let editingProjectId = null;
   let crudUploadedImages = []; // array of { src: base64, caption: '' }
 
-  // Dapatkan data proyek (gabungan default + storage kustom)
+  // Dapatkan data proyek (default dari projects-data.js, atau dari localStorage jika ada kustomisasi admin)
   function getAllProjects() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          // Jika data di storage masih data dummy lama (misal 'apex-commerce'), reset agar sinkron dengan projects-data.js terbaru
+          const hasOldDummies = parsed.some((p) => p.id === "apex-commerce" || p.id === "astronova-explorer");
+          if (!hasOldDummies) {
+            return parsed;
+          } else {
+            localStorage.removeItem(STORAGE_KEY);
+          }
         }
       }
     } catch (e) {}
@@ -89,6 +95,10 @@
         .map((tag) => `<span class="tag-pill tag-pill-accent">${escapeHTML(tag)}</span>`)
         .join("");
 
+      const photoCount = item.images && item.images.length > 1 
+        ? `<span class="card-gallery-pill">📷 ${item.images.length} Foto</span>` 
+        : "";
+
       // Kontrol Admin: Edit & Hapus
       const adminControls = isAdmin ? `
         <div class="card-admin-action-bar">
@@ -107,13 +117,14 @@
           </div>
           <div class="project-image-box">
             <img 
-              src="${escapeHTML(item.bannerImage || 'assets/projects/project1-ecommerce.svg')}" 
+              src="${escapeHTML(item.bannerImage || (item.images && item.images[0] ? item.images[0].src : 'assets/projects/pos (1).png'))}" 
               alt="Dokumentasi ${escapeHTML(item.title)}" 
               loading="lazy" 
               class="project-img-preview"
             />
+            ${photoCount}
             <div class="image-overlay-glow">
-              <span class="view-doc-prompt">🔍 Buka Detail &amp; Dokumentasi</span>
+              <span class="view-doc-prompt">🔍 Buka Detail &amp; ${item.images && item.images.length > 1 ? `${item.images.length} Foto Dokumentasi` : 'Dokumentasi'}</span>
             </div>
           </div>
           ${adminControls}
@@ -566,6 +577,7 @@ if (typeof window !== "undefined") {
 
     const displayImg = document.getElementById("modal-main-image");
     const captionEl = document.getElementById("modal-image-caption");
+    const counterEl = document.getElementById("modal-img-counter");
     const thumbnailsContainer = document.getElementById("modal-thumbnails-container");
 
     if (displayImg) {
@@ -574,6 +586,9 @@ if (typeof window !== "undefined") {
     }
     if (captionEl) {
       captionEl.textContent = curImg.caption || "";
+    }
+    if (counterEl) {
+      counterEl.textContent = `📸 ${currentImageIndex + 1} / ${images.length}`;
     }
 
     if (thumbnailsContainer) {

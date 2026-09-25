@@ -905,7 +905,8 @@ button {
 /* Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 540px));
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -922,6 +923,7 @@ button {
   transition: var(--transition-smooth);
   cursor: pointer;
   position: relative;
+  width: 100%;
 }
 
 .project-card-orbit:hover {
@@ -970,12 +972,34 @@ button {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #04060c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-gallery-pill {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(6, 10, 24, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-active);
+  color: var(--starlight-pure);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .project-img-preview {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
