@@ -2,9 +2,7 @@
  * ==============================================================================
  * DATA PENCAPAIAN, PRESTASI & SERTIFIKASI — YOGI FERNANDO
  * ==============================================================================
- * Berisi daftar prestasi kompetisi nasional dan sertifikasi profesional Dicoding.
- * Anda dapat dengan mudah meletakkan foto sertifikat di folder "assets/certificates/"
- * (misal: lo-kreatif.png, dicoding-web.png, dicoding-pemrograman.png).
+ * Berisi daftar prestasi kompetisi nasional dan sertifikasi profesional Dicoding (Android & Flutter).
  */
 
 const CERTIFICATES_DATA = [
@@ -19,54 +17,54 @@ const CERTIFICATES_DATA = [
     status: "Verified Champion",
     image: "assets/certificates/lo-kreatif.jpg",
     fallbackIcon: "🏆",
-    overview: "Meraih predikat Juara 1 Tingkat Nasional dalam ajang bergengsi LO KREATIF (Lomba Kreativitas Mahasiswa Nasional). Penghargaan ini mengakui keunggulan dalam perancangan produk digital, fungsionalitas arsitektur perangkat lunak, serta implementasi solusi teknologi yang tepat guna dan bernilai nyata bagi masyarakat dan industri.",
+    overview: "Meraih predikat Juara 1 Tingkat Nasional dalam ajang bergengsi LO KREATIF (Lomba Kreativitas Mahasiswa Nasional). Penghargaan ini mengakui keunggulan dalam perancangan produk digital, fungsionalitas arsitektur perangkat lunak, efisiensi database relasional, serta implementasi solusi teknologi yang tepat guna dan bernilai nyata bagi operasional bisnis dan industri.",
     highlights: [
-      "Juara 1 Tingkat Nasional bersaing dengan puluhan universitas dan politeknik se-Indonesia",
-      "Perancangan produk digital terpadu dengan integrasi backend dan database yang efisien",
-      "Presentasi teknis dan live demo arsitektur sistem di hadapan dewan juri ahli industri teknologi"
+      "Meraih Juara 1 Tingkat Nasional bersaing dengan puluhan universitas dan perguruan tinggi se-Indonesia",
+      "Perancangan produk perangkat lunak terpadu dengan integrasi sistem kasir, manajemen inventaris, dan database relasional berkinerja tinggi",
+      "Presentasi teknis dan live demo arsitektur sistem di hadapan dewan juri ahli industri teknologi nasional"
     ],
-    skills: ["Inovasi Perangkat Lunak", "Fullstack Development", "Laravel", "MySQL", "Problem Solving", "UI/UX Design"],
+    skills: ["Inovasi Perangkat Lunak", "Fullstack Development", "Laravel", "MySQL", "Arsitektur Sistem", "UI/UX Design"],
     verifyUrl: "https://www.linkedin.com/in/yogi-fernando1"
   },
   {
-    id: "dicoding-web-developer",
-    title: "Belajar Membuat Aplikasi Web dengan React / Modern Web",
-    subtitle: "Sertifikasi Kompetensi Front-End Web Developer & Modern JavaScript",
+    id: "dicoding-android-developer",
+    title: "Pengembangan Aplikasi Android (Android Developer)",
+    subtitle: "Sertifikasi Kompetensi Resmi Dicoding Academy — Google Developers Authorized Partner",
     category: "Sertifikasi Pemrograman",
     badge: "Dicoding Verified",
-    issuer: "Dicoding Indonesia (Google Developers Authorized Partner)",
-    year: "2024",
-    status: "Verified Certificate",
-    image: "assets/certificates/dicoding-web.jpg",
-    fallbackIcon: "📜",
-    overview: "Sertifikasi resmi penyelesaian kurikulum berstandar industri global dari Dicoding Indonesia. Memvalidasi kemampuan dalam membangun antarmuka web modern, manipulasi DOM interaktif, modularitas komponen, pengelolaan state, dan konsumsi RESTful API.",
-    highlights: [
-      "Penguasaan standar ES6+ JavaScript, asynchronous programming (Promise, Async/Await), dan Fetch API",
-      "Pembangunan komponen UI yang modular, efisien, dan responsif di berbagai perangkat",
-      "Lulus submission proyek akhir dengan review kode komprehensif dari tim reviewer profesional Dicoding"
-    ],
-    skills: ["React.js", "Modern JavaScript (ES6+)", "RESTful API Integration", "Modular Components", "Clean Code"],
-    verifyUrl: "https://www.dicoding.com"
-  },
-  {
-    id: "dicoding-dasar-pemrograman",
-    title: "Belajar Dasar Pemrograman & Software Engineering",
-    subtitle: "Sertifikasi Kompetensi Logika Pemrograman, Algoritma, & Arsitektur Kode",
-    category: "Sertifikasi Pemrograman",
-    badge: "Dicoding Verified",
-    issuer: "Dicoding Indonesia",
+    issuer: "Dicoding Indonesia (Google Authorized Training Partner)",
     year: "2024",
     status: "Verified Certificate",
     image: "assets/certificates/dicoding-android.jpg",
-    fallbackIcon: "🎓",
-    overview: "Sertifikasi kelulusan kurikulum dasar rekayasa perangkat lunak terakreditasi industri — berbasis pengembangan Android modern. Memvalidasi pemahaman mendalam tentang logika komputasional, struktur data, paradigma pemrograman terstruktur, dan best practices software development.",
+    fallbackIcon: "📱",
+    overview: "Sertifikasi kompetensi resmi dalam membangun aplikasi Android native modern berstandar industri. Memvalidasi keahlian dalam perancangan antarmuka responsif Material Design, manajemen lifecycle Activity & Fragment, penyimpanan basis data lokal, pemrosesan asynchronous di background, integrasi RESTful API, serta penerapan arsitektur MVVM dan Clean Architecture.",
     highlights: [
-      "Pemahaman konsep dasar komputasi, algoritma pemecahan masalah, dan struktur data",
-      "Prinsip clean code, penamaan variabel semantik, dan modularitas fungsi",
-      "Fondasi kokoh dalam transisi ke framework enterprise seperti Laravel dan library modern seperti React"
+      "Membangun antarmuka aplikasi Android native yang responsif dan interaktif dengan prinsip Material Design",
+      "Integrasi RESTful API secara asynchronous dengan error handling dan caching data lokal yang andal",
+      "Lulus submission proyek aplikasi Android dengan standar review kode ketat dari reviewer profesional Dicoding"
     ],
-    skills: ["Software Engineering", "Algoritma & Struktur Data", "Logic & Problem Solving", "Git & GitHub"],
-    verifyUrl: "https://www.dicoding.com"
+    skills: ["Android Studio", "Kotlin / Java", "MVVM Architecture", "Retrofit REST API", "Room / SQLite Database", "Material Design"],
+    verifyUrl: "https://www.linkedin.com/in/yogi-fernando1"
+  },
+  {
+    id: "dicoding-flutter-developer",
+    title: "Pengembangan Aplikasi Multi-Platform dengan Flutter & Dart",
+    subtitle: "Sertifikasi Kompetensi Resmi Dicoding Academy — Mobile Cross-Platform Development",
+    category: "Sertifikasi Pemrograman",
+    badge: "Dicoding Verified",
+    issuer: "Dicoding Indonesia (Google Authorized Training Partner)",
+    year: "2024",
+    status: "Verified Certificate",
+    image: "assets/certificates/dicoding-flutter.jpg",
+    fallbackIcon: "⚡",
+    overview: "Sertifikasi kompetensi resmi dalam membangun aplikasi mobile multi-platform (Android & iOS) berkinerja tinggi dari satu basis kode (single codebase). Memvalidasi penguasaan Flutter SDK, bahasa pemrograman Dart, konstruksi hierarki Widget Tree modular, pengelolaan State Management terstruktur, konsumsi REST API, dan perancangan antarmuka pengguna yang adaptif.",
+    highlights: [
+      "Pengembangan aplikasi multi-platform berkinerja tinggi menggunakan Flutter SDK dan Dart",
+      "Penerapan arsitektur State Management untuk pengelolaan alur data aplikasi yang terprediksi dan terisolasi",
+      "Lulus evaluasi submission proyek aplikasi mobile Flutter dengan ulasan kode komprehensif dari reviewer Dicoding"
+    ],
+    skills: ["Flutter SDK", "Dart", "State Management (Provider/Bloc)", "Cross-Platform Mobile", "RESTful API Integration", "Custom Widgets"],
+    verifyUrl: "https://www.linkedin.com/in/yogi-fernando1"
   }
 ];
 
