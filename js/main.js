@@ -1,21 +1,18 @@
 /**
  * ==============================================================================
- * MAIN INTERACTIVITY & CONTROLLER
+ * MAIN INTERACTIVITY & CONTROLLER — YOGI FERNANDO
  * ==============================================================================
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
-  setupAudioControl();
   setupContactForm();
-  setupMeteorTrigger();
   checkRealProfilePhoto();
-  setupScrollAnimations();
 });
 
-// Setup Mobile Navigation & Sticky Header
+// Setup Mobile Navigation & Header Scroll State
 function setupNavigation() {
-  const header = document.querySelector(".cosmic-header");
+  const header = document.getElementById("header");
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const navMenu = document.getElementById("main-nav");
 
@@ -26,7 +23,7 @@ function setupNavigation() {
       navMenu.classList.toggle("nav-open");
     });
 
-    // Tutup menu saat link diklik di mobile
+    // Close menu when a link is clicked
     navMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navMenu.classList.remove("nav-open");
@@ -35,42 +32,25 @@ function setupNavigation() {
     });
   }
 
-  // Scroll header styling
+  // Active link on scroll
+  const sections = document.querySelectorAll("section[id]");
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-      header.classList.add("header-scrolled");
-    } else {
-      header.classList.remove("header-scrolled");
-    }
-  });
-}
+    const scrollY = window.pageYOffset;
 
-// Setup Cosmic Audio FX Toggle
-function setupAudioControl() {
-  const audioBtn = document.getElementById("audio-toggle-btn");
-  if (!audioBtn || !window.CosmicAudio) return;
+    sections.forEach((current) => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 120;
+      const sectionId = current.getAttribute("id");
+      const navLink = document.querySelector(`.main-nav a[href*="${sectionId}"]`);
 
-  function updateAudioButtonUI() {
-    const enabled = window.CosmicAudio.isEnabled;
-    audioBtn.setAttribute("aria-pressed", enabled ? "true" : "false");
-    audioBtn.innerHTML = enabled
-      ? `<span class="sound-wave-icon">🔊</span> <span>Sound: ON</span>`
-      : `<span class="sound-wave-icon">🔇</span> <span>Sound: OFF</span>`;
-    audioBtn.classList.toggle("audio-active", enabled);
-  }
-
-  updateAudioButtonUI();
-
-  audioBtn.addEventListener("click", () => {
-    window.CosmicAudio.toggle();
-    updateAudioButtonUI();
-    if (window.showToastMessage) {
-      window.showToastMessage(
-        window.CosmicAudio.isEnabled
-          ? "✨ Efek Suara Kosmik Diaktifkan!"
-          : "Efek Suara Dinonaktifkan."
-      );
-    }
+      if (navLink) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLink.classList.add("active");
+        } else {
+          navLink.classList.remove("active");
+        }
+      }
+    });
   });
 }
 
@@ -78,21 +58,25 @@ function setupAudioControl() {
 function setupContactForm() {
   const contactForm = document.getElementById("mission-contact-form");
   const copyEmailBtn = document.getElementById("btn-copy-email");
-  const devEmail = "yogifernando885@gmail.com"; // Email Yogi Fernando
+  const copyEmailHeroBtn = document.getElementById("btn-copy-email-hero");
+  const devEmail = "yogifernando885@gmail.com";
+
+  function handleCopyEmail() {
+    navigator.clipboard.writeText(devEmail).then(() => {
+      if (window.showToastMessage) {
+        window.showToastMessage(`📋 Email ${devEmail} berhasil disalin!`);
+      }
+    }).catch(() => {
+      window.location.href = `mailto:${devEmail}`;
+    });
+  }
 
   if (copyEmailBtn) {
-    copyEmailBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(devEmail).then(() => {
-        if (window.showToastMessage) {
-          window.showToastMessage(`📋 Email ${devEmail} berhasil disalin ke clipboard!`);
-        }
-        if (window.CosmicAudio) {
-          window.CosmicAudio.playStarlightChime();
-        }
-      }).catch(() => {
-        window.location.href = `mailto:${devEmail}`;
-      });
-    });
+    copyEmailBtn.addEventListener("click", handleCopyEmail);
+  }
+
+  if (copyEmailHeroBtn) {
+    copyEmailHeroBtn.addEventListener("click", handleCopyEmail);
   }
 
   if (contactForm) {
@@ -109,40 +93,24 @@ function setupContactForm() {
 
       if (!name || !email || !message) {
         if (window.showToastMessage) {
-          window.showToastMessage("⚠️ Harap lengkapi semua kolom pesan!");
+          window.showToastMessage("⚠️ Harap lengkapi seluruh kolom formulir!");
         }
         return;
       }
 
-      // Buat mailto link langsung agar pesan bisa dikirim dari email pengguna
-      const subject = encodeURIComponent(`Inquiry Portofolio dari ${name}`);
+      const subject = encodeURIComponent(`Pesan Portofolio dari ${name}`);
       const body = encodeURIComponent(`Halo Yogi,\n\n${message}\n\nDari: ${name} (${email})`);
       const mailtoUrl = `mailto:${devEmail}?subject=${subject}&body=${body}`;
 
       if (window.showToastMessage) {
-        window.showToastMessage("🚀 Membuka aplikasi email Anda...");
+        window.showToastMessage("Membuka aplikasi email...");
       }
 
       setTimeout(() => {
         window.location.href = mailtoUrl;
-      }, 500);
+      }, 400);
 
       contactForm.reset();
-    });
-  }
-}
-
-// Setup Trigger Meteor dari tombol
-function setupMeteorTrigger() {
-  const triggerBtn = document.getElementById("btn-trigger-meteor");
-  if (triggerBtn) {
-    triggerBtn.addEventListener("click", () => {
-      if (typeof window.spawnCosmicMeteor === "function") {
-        window.spawnCosmicMeteor();
-      }
-      if (window.CosmicAudio) {
-        window.CosmicAudio.playStarlightChime();
-      }
     });
   }
 }
@@ -164,27 +132,4 @@ function checkRealProfilePhoto() {
       avatarImg.src = "assets/profile.jpg";
     };
   };
-}
-
-// Scroll Intersection Reveal
-function setupScrollAnimations() {
-  const revealElements = document.querySelectorAll(".reveal-on-scroll");
-  if (!("IntersectionObserver" in window)) {
-    revealElements.forEach((el) => el.classList.add("revealed"));
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  revealElements.forEach((el) => observer.observe(el));
 }

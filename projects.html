@@ -3,94 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arsip Dokumentasi Proyek — Yogi Fernando Portfolio</title>
-  <meta name="description" content="Koleksi lengkap dokumentasi tangkapan layar, studi kasus arsitektur, dan ringkasan teknis proyek website karya Yogi Fernando (Laravel, PHP, React, MySQL, Tailwind CSS).">
+  <title>Arsip Proyek — Yogi Fernando | Web Developer</title>
+  <meta name="description" content="Koleksi dokumentasi proyek website karya Yogi Fernando (Laravel, PHP, React, MySQL, Tailwind CSS).">
   
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/svg+xml" href="assets/profile.svg">
+  <link rel="icon" type="image/png" href="assets/profile.png">
   <style>
-    .projects-archive-header {
-      padding-top: 8rem;
-      padding-bottom: 2.5rem;
+    .archive-header-box {
+      padding: 5rem 0 2.5rem;
       text-align: center;
     }
-    .search-filter-box {
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
+    .archive-search-wrap {
+      max-width: 520px;
+      margin: 2rem auto 3rem;
       position: relative;
     }
-    .search-input-field {
+    .archive-search-input {
       width: 100%;
-      padding: 0.95rem 1.25rem 0.95rem 3rem;
+      padding: 0.85rem 1.25rem 0.85rem 2.85rem;
       border-radius: var(--radius-full);
-      background: rgba(13, 19, 36, 0.85);
-      border: 1px solid var(--border-space);
-      color: var(--starlight-pure);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-pure);
       font-size: 0.95rem;
-      backdrop-filter: blur(10px);
-      transition: var(--transition-smooth);
+      transition: var(--transition-fast);
     }
-    .search-input-field:focus {
+    .archive-search-input:focus {
       outline: none;
-      border-color: var(--color-cyan);
-      box-shadow: 0 0 20px var(--color-cyan-glow);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
     }
-    .search-icon-lens {
+    .search-lens-icon {
       position: absolute;
-      left: 1.25rem;
+      left: 1.1rem;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--starlight-muted);
+      color: var(--text-muted);
       pointer-events: none;
-    }
-    .archive-doc-banner {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1));
-      border: 1px solid var(--border-active);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem 2rem;
-      margin-bottom: 3.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-    .archive-doc-banner p {
-      font-size: 0.95rem;
-      color: var(--starlight-body);
-      max-width: 750px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Interactive Cosmic Canvas -->
-  <canvas id="space-canvas" aria-hidden="true"></canvas>
+  <!-- Ambient Top Light -->
+  <div class="ambient-gradient-top" aria-hidden="true"></div>
+  <div class="ambient-grid-overlay" aria-hidden="true"></div>
 
-  <div class="cosmic-page-wrap">
+  <div class="page-wrap">
     
     <!-- Header -->
-    <header class="cosmic-header header-scrolled" id="header">
+    <header class="site-header" id="header">
       <div class="container header-inner">
         <a href="index.html" class="brand-link" aria-label="Kembali ke Beranda">
-          <div class="brand-icon-wrap">🪐</div>
-          <span class="brand-callsign">YOGI<span>.DEV</span></span>
+          <span class="brand-monogram">YF</span>
+          <span class="brand-text">Yogi Fernando</span>
         </a>
 
         <nav class="main-nav" id="main-nav" aria-label="Navigasi Halaman Proyek">
           <a href="index.html" class="nav-link">← Kembali ke Beranda</a>
-          <a href="index.html#orbit-keahlian" class="nav-link">Orbit Keahlian</a>
+          <a href="index.html#keahlian" class="nav-link">Keahlian</a>
           <a href="projects.html" class="nav-link active">Arsip Proyek</a>
           <a href="index.html#kontak" class="nav-link">Kontak</a>
         </nav>
 
         <div class="header-actions">
-          <button id="audio-toggle-btn" class="btn-audio-toggle" title="Efek Suara Semesta">
-            <span class="sound-wave-icon">🔇</span>
-            <span>Sound: OFF</span>
-          </button>
-          
-          <a href="index.html#kontak" class="btn-primary-ghost">
+          <a href="https://github.com/yogifernandoo" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Profil GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+
+          <a href="index.html#kontak" class="btn-primary-header">
             <span>Kontak Saya</span>
           </a>
 
@@ -106,40 +89,30 @@
     <main class="container" style="flex-grow: 1;">
       
       <!-- Page Header -->
-      <section class="projects-archive-header">
-        <span class="section-tag">KATALOG DOKUMENTASI PROYEK</span>
-        <h1 class="hero-title">Koleksi Website yang Pernah Saya Bangun</h1>
-        <p class="section-subtitle" style="max-width: 650px; margin: 0 auto 2rem;">
-          Jelajahi hasil karya lengkap dengan visualisasi screenshot, arsitektur fitur, dan rekayasa solusi yang diterapkan.
+      <section class="archive-header-box">
+        <span class="section-tag">DOKUMENTASI LENGKAP</span>
+        <h1 class="section-title">Koleksi Proyek Perangkat Lunak</h1>
+        <p class="section-subtitle" style="max-width: 620px; margin: 0 auto;">
+          Daftar dokumentasi aplikasi web lengkap dengan tangkapan layar antarmuka, arsitektur data, dan tantangan teknis.
         </p>
 
         <!-- Search Bar -->
-        <div class="search-filter-box">
-          <span class="search-icon-lens">🔍</span>
+        <div class="archive-search-wrap">
+          <span class="search-lens-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </span>
           <input 
             type="text" 
             id="project-search-input" 
-            class="search-input-field" 
-            placeholder="Cari berdasarkan nama proyek atau teknologi (misal: Laravel, React, MySQL, Tailwind)..."
+            class="archive-search-input" 
+            placeholder="Cari proyek berdasarkan teknologi (Laravel, React, POS)..."
             aria-label="Cari Proyek"
           >
         </div>
       </section>
-
-      <!-- Petunjuk Mudah Menambah Dokumentasi Gambar Pribadi -->
-      <div class="archive-doc-banner">
-        <div>
-          <strong style="color: var(--starlight-pure); font-size: 1.05rem; display: block; margin-bottom: 0.25rem;">
-            📌 Cara Memperbarui Screenshot Proyek Anda Sendiri
-          </strong>
-          <p>
-            Punya gambar screenshot baru? Letakkan file gambar di folder <code>assets/projects/nama-file.png</code>, lalu daftarkan judul dan deskripsinya di file <code>data/projects-data.js</code>. Website akan otomatis menampilkannya dengan rapi!
-          </p>
-        </div>
-        <a href="index.html#kontak" class="btn-outline-starlight" style="white-space: nowrap;">
-          <span>Diskusi Proyek Baru ↗</span>
-        </a>
-      </div>
 
       <!-- Main Project Cards Grid -->
       <section style="margin-bottom: 6rem;">
@@ -151,13 +124,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="cosmic-footer">
+    <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-credits">
-          <p>© 2026 <strong>Yogi Fernando</strong> • Siap di-deploy langsung ke GitHub Pages gratis selamanya.</p>
+          <p>© 2026 <strong>Yogi Fernando</strong> • Web Developer</p>
         </div>
         <div>
-          <a href="index.html" class="btn-outline-starlight" style="padding: 0.35rem 0.85rem; font-size: 0.82rem;">
+          <a href="index.html" class="btn-secondary" style="padding: 0.45rem 1rem; font-size: 0.85rem;">
             <span>← Kembali ke Beranda</span>
           </a>
         </div>
@@ -180,6 +153,7 @@
         <div class="modal-image-showcase">
           <button id="modal-prev-img" class="gallery-nav-btn gallery-nav-prev" aria-label="Gambar Sebelumnya">‹</button>
           <div class="modal-img-viewport">
+            <span class="gallery-counter-badge" id="modal-img-counter">📸 1 / 7</span>
             <img id="modal-main-image" src="" alt="Pratinjau Dokumentasi Proyek">
           </div>
           <button id="modal-next-img" class="gallery-nav-btn gallery-nav-next" aria-label="Gambar Berikutnya">›</button>
@@ -187,11 +161,11 @@
         </div>
 
         <div class="modal-thumbnails-bar" id="modal-thumbnails-container"></div>
-        <p style="font-size: 0.85rem; color: var(--starlight-muted); margin-bottom: 0.8rem;" id="modal-project-year"></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;" id="modal-project-year"></p>
 
         <div class="case-study-block">
           <h4>Ringkasan &amp; Latar Belakang</h4>
-          <p id="modal-project-overview" style="color: var(--starlight-body); line-height: 1.7;"></p>
+          <p id="modal-project-overview" style="color: var(--text-body); line-height: 1.7;"></p>
         </div>
 
         <div class="metrics-hud-grid" id="modal-project-metrics"></div>
@@ -212,10 +186,10 @@
         </div>
 
         <div class="modal-footer-actions">
-          <a id="modal-gh-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-outline-starlight">
+          <a id="modal-gh-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary">
             <span>Lihat Repositori GitHub ↗</span>
           </a>
-          <a id="modal-live-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-cosmic-glow">
+          <a id="modal-live-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary">
             <span>Kunjungi Website Live ↗</span>
           </a>
         </div>
@@ -225,8 +199,6 @@
 
   <!-- Scripts -->
   <script src="data/projects-data.js"></script>
-  <script src="js/audio-synth.js"></script>
-  <script src="js/starfield.js"></script>
   <script src="js/admin-auth.js"></script>
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
@@ -253,57 +225,18 @@
           grid.innerHTML = "";
           if (matched.length === 0) {
             grid.innerHTML = `
-              <div class="empty-state-card" style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem;">
-                <p style="font-size: 2.5rem; margin-bottom: 1rem;">🔍</p>
-                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Tidak ada proyek yang cocok dengan "${query}"</h3>
-                <p style="color: var(--starlight-muted);">Coba cari kata kunci lain seperti "Laravel", "React", atau "MySQL".</p>
+              <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem;">
+                <p style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</p>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Tidak ada proyek yang cocok</h3>
+                <p style="color: var(--text-muted);">Coba kata kunci lain seperti "Laravel", "React", atau "POS".</p>
               </div>
             `;
             return;
           }
 
-          matched.forEach((item) => {
-            const card = document.createElement("article");
-            card.className = "project-card-orbit";
-            card.dataset.id = item.id;
-            card.innerHTML = `
-              <div class="project-media-viewport">
-                <div class="browser-dot-bar">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                  <span class="viewport-title">${item.status}</span>
-                </div>
-                <div class="project-image-box">
-                  <img src="${item.bannerImage}" alt="${item.title}" class="project-img-preview" />
-                  <div class="image-overlay-glow">
-                    <span class="view-doc-prompt">🔍 Buka Dokumentasi Lengkap</span>
-                  </div>
-                </div>
-              </div>
-              <div class="project-content-body">
-                <div class="project-meta-row">
-                  <span class="badge-status">● ${item.status}</span>
-                  <span class="badge-year">${item.year}</span>
-                </div>
-                <h3 class="project-title">${item.title}</h3>
-                <p class="project-description">${item.subtitle}</p>
-                <div class="project-tags-wrap">
-                  ${item.tags.slice(0, 5).map(t => `<span class="tag-pill tag-pill-accent">${t}</span>`).join("")}
-                </div>
-                <div class="project-actions-row">
-                  <button class="btn-open-study" onclick="openCaseStudy('${item.id}')">
-                    <span>Buka Detail &amp; Galeri</span>
-                  </button>
-                </div>
-              </div>
-            `;
-            card.addEventListener("click", (e) => {
-              if (e.target.closest("a")) return;
-              window.openCaseStudy(item.id);
-            });
-            grid.appendChild(card);
-          });
+          if (typeof window.renderProjectGrid === "function") {
+            window.renderProjectGrid("portfolio-grid");
+          }
         });
       }
     });
