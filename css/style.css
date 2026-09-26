@@ -644,8 +644,7 @@ p strong {
    ============================================================================== */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 560px));
-  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -1765,6 +1764,10 @@ dialog::backdrop {
   }
 
   .bento-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
     grid-template-columns: 1fr;
   }
 
