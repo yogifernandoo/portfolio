@@ -693,7 +693,53 @@
     </div>
   </dialog>
 
+  <!-- ====================================================================
+       ADMIN LOGIN DIALOG (TERSEMBUNYI — Dipicu via Ctrl+Shift+A)
+       ==================================================================== -->
+  <dialog id="admin-login-dialog" aria-labelledby="admin-login-title">
+    <div class="modal-case-study-frame" style="max-width: 420px;">
+      <div class="modal-header-bar">
+        <div class="modal-title-group">
+          <h3 id="admin-login-title">🔐 Portal Admin</h3>
+        </div>
+        <button id="admin-login-close" class="btn-close-modal" aria-label="Tutup">✕</button>
+      </div>
+
+      <form id="admin-login-form" style="padding: 1.75rem;">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
+          Masukkan kata sandi untuk mengaktifkan Mode Admin. Area ini hanya untuk <strong style="color: var(--text-heading);">Yogi Fernando</strong>.
+        </p>
+
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label for="admin-password-input" style="font-size: 0.85rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.5rem; display: block;">Kata Sandi</label>
+          <input
+            type="password"
+            id="admin-password-input"
+            class="form-input"
+            placeholder="Masukkan kata sandi admin..."
+            autocomplete="current-password"
+            required
+          >
+        </div>
+
+        <p id="admin-login-error" style="display: none; color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; font-weight: 500;">
+          ⚠️ Kata sandi salah. Akses ditolak.
+        </p>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span>Masuk Mode Admin</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </dialog>
+
   <!-- Scripts -->
+
   <script src="data/projects-data.js"></script>
   <script src="data/certificates-data.js"></script>
   <script src="js/admin-auth.js"></script>
