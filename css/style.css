@@ -1749,35 +1749,98 @@ dialog::backdrop {
 }
 
 /* ==============================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN — COMPREHENSIVE
    ============================================================================== */
+
+/* --- LARGE DESKTOP (≥ 1280px) --- */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+
+/* --- TABLET / SMALL DESKTOP (≤ 1100px) --- */
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-card-box {
+    padding: 3rem;
+    gap: 2.5rem;
+  }
+}
+
+/* --- TABLET LANDSCAPE (≤ 992px) --- */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
+  }
+
+  .hero-text-content {
+    text-align: center;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-tech-strip {
+    justify-content: center;
   }
 
   .hero-profile-card {
-    max-width: 440px;
+    max-width: 400px;
     margin: 0 auto;
     width: 100%;
   }
 
   .bento-skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
 
   .contact-card-box {
     grid-template-columns: 1fr;
     padding: 2.5rem;
+    gap: 2rem;
+  }
+
+  .contact-heading {
+    font-size: 1.8rem;
+  }
+
+  .principles-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cert-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-end;
   }
 }
 
+/* --- TABLET PORTRAIT / LARGE MOBILE (≤ 768px) --- */
 @media (max-width: 768px) {
+  /* Navigation */
   .main-nav {
     display: none;
   }
@@ -1789,21 +1852,330 @@ dialog::backdrop {
     top: 72px;
     left: 0;
     width: 100%;
-    background: #0a0d16;
+    background: rgba(8, 9, 14, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 1.5rem;
-    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    gap: 0.25rem;
+    z-index: 99;
+  }
+
+  .main-nav.nav-open .nav-link {
+    padding: 0.8rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+  }
+
+  .main-nav.nav-open .nav-link:hover {
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .mobile-menu-toggle {
     display: flex;
   }
 
-  .hero-title {
-    font-size: 2.2rem;
+  .btn-primary-header span {
+    display: none;
   }
 
-  .contact-card-box {
+  .btn-primary-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 7vw, 2.5rem);
+  }
+
+  .hero-bio {
+    font-size: 0.97rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary,
+  .hero-cta-group .btn-ghost {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Skills */
+  .bento-skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bento-card {
     padding: 1.75rem;
   }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Contact */
+  .contact-card-box {
+    padding: 1.75rem;
+    gap: 2rem;
+  }
+
+  .contact-heading {
+    font-size: 1.65rem;
+  }
+
+  .contact-text {
+    font-size: 0.94rem;
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0.75rem 1.25rem;
+    justify-content: start;
+  }
+
+  /* Section Titles */
+  .section-title {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+
+  /* Certs preview */
+  .cert-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modal */
+  .modal-case-study-frame {
+    width: 96vw;
+    max-height: 92vh;
+  }
+
+  .modal-body-content {
+    padding: 1.25rem;
+  }
+
+  .modal-footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-footer-actions a {
+    justify-content: center;
+  }
+
+  .modal-img-viewport {
+    max-height: 300px;
+  }
+
+  .modal-img-viewport img {
+    max-height: 280px;
+  }
+
+  /* Portfolio archive link */
+  .portfolio-archive-link-wrap {
+    margin-top: 2.5rem;
+  }
+
+  /* Metrics HUD */
+  .metrics-hud-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
+/* --- MOBILE (≤ 540px) --- */
+@media (max-width: 540px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Header */
+  .header-inner {
+    height: 62px;
+  }
+
+  .brand-text {
+    font-size: 1rem;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: 3rem 0 3rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.2rem);
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+  }
+
+  /* Profile card */
+  .profile-card-inner {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .profile-image-wrap {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Section */
+  .section-block {
+    padding: 3.5rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 1.85rem);
+  }
+
+  /* Bento cards */
+  .bento-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .bento-card-title {
+    font-size: 1.1rem;
+  }
+
+  /* Project card */
+  .project-content-body {
+    padding: 1.25rem;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+  }
+
+  /* Principles */
+  .principle-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  /* Contact */
+  .contact-card-box {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .contact-heading {
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  .footer-nav {
+    grid-template-columns: repeat(2, auto);
+    gap: 0.65rem 1rem;
+  }
+
+  .footer-credits p {
+    font-size: 0.82rem;
+  }
+
+  /* Modal */
+  .modal-header-bar {
+    padding: 1rem 1.25rem;
+  }
+
+  .modal-title-group h3 {
+    font-size: 1.05rem;
+  }
+
+  .modal-img-viewport {
+    padding: 0.5rem;
+    max-height: 240px;
+  }
+
+  .modal-img-viewport img {
+    max-height: 220px;
+  }
+
+  .thumb-btn {
+    width: 68px;
+    height: 44px;
+  }
+
+  .metrics-hud-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .case-study-block h4 {
+    font-size: 1rem;
+  }
+
+  /* Gallery nav buttons */
+  .gallery-nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  /* Toast */
+  .cosmic-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  /* Cert cards */
+  .cert-card-body {
+    padding: 1.25rem;
+  }
+
+  /* Archive link button */
+  .portfolio-archive-link-wrap .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- VERY SMALL MOBILE (≤ 380px) --- */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .bento-skills-grid {
+    gap: 0.85rem;
+  }
+
+  .hero-cta-group {
+    gap: 0.65rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    font-size: 0.88rem;
+    padding: 0.7rem 1.1rem;
+  }
+
+  .profile-image-wrap {
+    width: 95px;
+    height: 95px;
+  }
+}
+
