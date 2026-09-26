@@ -7,6 +7,62 @@
 
 const PORTFOLIO_PROJECTS = [
   {
+    id: "siakad-smk-kelapa-sawit",
+    title: "SIAKAD SMK Kelapa Sawit",
+    subtitle: "Sistem Informasi Akademik Terintegrasi dengan Manajemen Multi-Role",
+    year: "2024",
+    status: "Production Ready",
+    bannerImage: "assets/projects/home.png",
+    images: [
+      {
+        src: "assets/projects/home.png",
+        caption: "Halaman Utama (Landing Page) & Portal Login Terpusat SIAKAD"
+      },
+      {
+        src: "assets/projects/admin.png",
+        caption: "Dashboard Administrator: Kendali Penuh Sistem, Manajemen Data Master & Akses Pengguna"
+      },
+      {
+        src: "assets/projects/guru.png",
+        caption: "Portal Guru: Manajemen Kelas, Input Nilai Akademik, dan Kehadiran Siswa"
+      },
+      {
+        src: "assets/projects/siswa.png",
+        caption: "Portal Siswa: Akses Jadwal Pelajaran, Transkrip Nilai, dan Informasi Akademik"
+      },
+      {
+        src: "assets/projects/tu.png",
+        caption: "Portal Tata Usaha (TU): Administrasi Keuangan, Pembayaran, dan Manajemen Arsip Sekolah"
+      }
+    ],
+    overview: "Sistem Informasi Akademik (SIAKAD) SMK Kelapa Sawit adalah platform manajemen operasional sekolah yang komprehensif. Aplikasi ini dirancang khusus untuk digitalisasi proses akademik dan administrasi dengan memisahkan hak akses (Role-Based Access Control) menjadi empat entitas utama: Admin, Guru, Siswa, dan Tata Usaha (TU). Sistem ini memastikan kelancaran alur informasi antar civitas akademika.",
+    tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS", "Sistem Akademik", "Multi-Role"],
+    metrics: [
+      { label: "Keamanan Akses", value: "Role-Based (4 Level)" },
+      { label: "Data Akademik", value: "Tersentralisasi" },
+      { label: "UI / UX", value: "Responsif & Modern" }
+    ],
+    features: [
+      "Sistem login terpusat dengan Middleware untuk otorisasi akses (Admin, Guru, Siswa, TU)",
+      "Modul akademik komprehensif: penjadwalan kelas, rekap absensi, dan penginputan nilai rapor",
+      "Modul administrasi Tata Usaha: pencatatan pembayaran SPP dan manajemen arsip/dokumen",
+      "Portal akses mandiri untuk siswa guna memantau perkembangan akademik secara real-time",
+      "Antarmuka pengguna yang bersih dan adaptif (Mobile-Friendly) menggunakan utilitas Tailwind CSS"
+    ],
+    challenges: [
+      {
+        challenge: "Mengelola isolasi data dan logika otorisasi yang kompleks di antara 4 tingkatan akses pengguna (role) agar privasi data terjamin.",
+        solution: "Menerapkan struktur otentikasi kustom dan Middleware Gate/Policy dari Laravel untuk membatasi akses endpoint dan tampilan secara ketat berbasis peran pengguna."
+      },
+      {
+        challenge: "Membangun antarmuka dashboard yang spesifik namun tetap mempertahankan konsistensi desain secara keseluruhan sistem.",
+        solution: "Menggunakan sistem komponen Blade dari Laravel dan desain sistem Tailwind CSS untuk menciptakan layout dashboard yang modular, dapat digunakan ulang, namun khusus untuk tiap role."
+      }
+    ],
+    liveUrl: "",
+    githubUrl: ""
+  },
+  {
     id: "pos-toko-yogi",
     title: "POS TOKO YOGI",
     subtitle: "Aplikasi Point of Sale (POS) & Manajemen Kasir Toko berbasis Laravel, PHP, MySQL, JavaScript, dan Tailwind CSS",
