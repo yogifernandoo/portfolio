@@ -33,7 +33,7 @@ const CERTIFICATES_DATA = [
     category: "Sertifikasi Pemrograman",
     badge: "Dicoding Verified",
     issuer: "Dicoding Indonesia (Google Authorized Training Partner)",
-    year: "2024",
+    year: "2025",
     status: "Verified Certificate",
     image: "assets/certificates/dicoding-android.jpg",
     fallbackIcon: "📱",
