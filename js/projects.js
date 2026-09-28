@@ -763,6 +763,7 @@ if (typeof window !== "undefined") {
 
             const minDimension = Math.min(img.width, img.height);
             baseScale = (CROP_RADIUS * 2) / minDimension;
+            panY = Math.max(0, (img.height - img.width) * baseScale * 0.2);
 
             if (cropBox) cropBox.style.display = "flex";
             redrawCropCanvas();

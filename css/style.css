@@ -2359,6 +2359,7 @@ h1, h2, h3, h4 { letter-spacing: 0; }
   border-radius: 0;
   background: #dce8ff;
   box-shadow: 4px 4px 0 #191919;
+  object-position: center 25%;
 }
 .profile-role { color: #165bd8; font-weight: 700; }
 .chip-item { color: #383830; }
