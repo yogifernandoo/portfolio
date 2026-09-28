@@ -7,31 +7,115 @@
 
 const PORTFOLIO_PROJECTS = [
   {
+    id: "aplikasi-kasir-cafe-unico-jambi",
+    title: "Aplikasi Kasir Cafe Unico Jambi",
+    subtitle: "Aplikasi kasir Android dengan akses khusus Admin, Kasir, dan Pelanggan",
+    year: "2026",
+    status: "Aplikasi Android",
+    bannerImage: "assets/projects/uniqo/home.jpeg",
+    images: [
+      {
+        src: "assets/projects/uniqo/home.jpeg",
+        caption: "Beranda aplikasi Cafe Unico"
+      },
+      {
+        src: "assets/projects/uniqo/dashboard_admin.jpeg",
+        caption: "Dashboard admin untuk memantau operasional cafe"
+      },
+      {
+        src: "assets/projects/uniqo/dashboard kasir.jpeg",
+        caption: "Dashboard kasir untuk operasional transaksi"
+      },
+      {
+        src: "assets/projects/uniqo/dashboardpelanggan.jpeg",
+        caption: "Dashboard pelanggan untuk melihat menu dan aktivitas pesanan"
+      },
+      {
+        src: "assets/projects/uniqo/daftar.jpeg",
+        caption: "Daftar menu yang tersedia di Cafe Unico"
+      },
+      {
+        src: "assets/projects/uniqo/deskripsi.jpeg",
+        caption: "Detail menu dan informasi produk"
+      },
+      {
+        src: "assets/projects/uniqo/specialoffers.jpeg",
+        caption: "Penawaran spesial Cafe Unico"
+      },
+      {
+        src: "assets/projects/uniqo/detailpesanan.jpeg",
+        caption: "Rincian pesanan pelanggan"
+      },
+      {
+        src: "assets/projects/uniqo/konfirmasi.jpeg",
+        caption: "Konfirmasi pesanan sebelum diproses"
+      },
+      {
+        src: "assets/projects/uniqo/riwayat.jpeg",
+        caption: "Riwayat pesanan pelanggan"
+      },
+      {
+        src: "assets/projects/uniqo/editprofile.jpeg",
+        caption: "Pengaturan profil pengguna"
+      },
+      {
+        src: "assets/projects/uniqo/cetaklaporan.jpeg",
+        caption: "Cetak laporan operasional dan transaksi"
+      }
+    ],
+    overview: "Aplikasi kasir berbasis Android untuk mendukung operasional Cafe Unico Jambi. Aplikasi menyediakan tiga jenis akses: admin, kasir, dan pelanggan. Pelanggan dapat melihat menu, penawaran, serta pesanan; sementara dashboard admin dan kasir mendukung pengelolaan operasional cafe.",
+    tags: ["Android", "Aplikasi Kasir", "Point of Sale", "Multi-Role", "Cafe Unico Jambi"],
+    metrics: [
+      { label: "Platform", value: "Android" },
+      { label: "Hak Akses", value: "3 Role" },
+      { label: "Dokumentasi", value: "12 Layar" }
+    ],
+    features: [
+      "Hak akses terpisah untuk admin, kasir, dan pelanggan",
+      "Pelanggan dapat menjelajahi menu, melihat penawaran, dan mengelola pesanan",
+      "Dashboard khusus untuk kebutuhan operasional admin dan kasir",
+      "Rincian, konfirmasi, dan riwayat pesanan pelanggan",
+      "Pengelolaan profil serta fitur cetak laporan operasional dan transaksi"
+    ],
+    challenges: [
+      {
+        challenge: "Menyajikan pengalaman yang relevan untuk tiga jenis pengguna dengan kebutuhan berbeda.",
+        solution: "Menyediakan dashboard dan alur tersendiri untuk Admin, Kasir, dan Pelanggan."
+      },
+      {
+        challenge: "Memudahkan pelanggan dan staf menelusuri pesanan dari proses pemesanan hingga riwayat.",
+        solution: "Menyediakan layar rincian, konfirmasi, dan riwayat pesanan."
+      }
+    ],
+    liveUrl: "",
+    githubUrl: ""
+  },
+  {
     id: "siakad-smk-kelapa-sawit",
     title: "SIAKAD SMK Kelapa Sawit",
     subtitle: "Sistem Informasi Akademik Terintegrasi dengan Manajemen Multi-Role",
     year: "2024",
     status: "Production Ready",
-    bannerImage: "assets/projects/home.png",
+    bannerImage: "assets/projects/siakad/home.png",
     images: [
       {
-        src: "assets/projects/home.png",
+        src: "assets/projects/siakad/home.png",
         caption: "Halaman Utama (Landing Page) & Portal Login Terpusat SIAKAD"
       },
       {
-        src: "assets/projects/admin.png",
+        src: "assets/projects/siakad/admin.png",
         caption: "Dashboard Administrator: Kendali Penuh Sistem, Manajemen Data Master & Akses Pengguna"
       },
       {
-        src: "assets/projects/guru.png",
+        src: "assets/projects/siakad/guru.png",
         caption: "Portal Guru: Manajemen Kelas, Input Nilai Akademik, dan Kehadiran Siswa"
       },
       {
-        src: "assets/projects/siswa.png",
+        src: "assets/projects/siakad/siswa.png",
         caption: "Portal Siswa: Akses Jadwal Pelajaran, Transkrip Nilai, dan Informasi Akademik"
       },
       {
-        src: "assets/projects/tu.png",
+        src: "assets/projects/siakad/tu.png",
         caption: "Portal Tata Usaha (TU): Administrasi Keuangan, Pembayaran, dan Manajemen Arsip Sekolah"
       }
     ],
@@ -68,34 +152,34 @@ const PORTFOLIO_PROJECTS = [
     subtitle: "Aplikasi Point of Sale (POS) & Manajemen Kasir Toko berbasis Laravel, PHP, MySQL, JavaScript, dan Tailwind CSS",
     year: "2026",
     status: "Production Ready",
-    bannerImage: "assets/projects/pos (7).png",
+    bannerImage: "assets/projects/pos/pos (7).png",
     images: [
       {
-        src: "assets/projects/pos (7).png",
+        src: "assets/projects/pos/pos (7).png",
         caption: "Riwayat Lengkap Log Transaksi & Mutasi Kas Masuk / Keluar"
       },
       {
-        src: "assets/projects/pos (6).png",
+        src: "assets/projects/pos/pos (6).png",
         caption: "Pratinjau Cetak Struk Nota Belanja & Invoice Transaksi Kasir"
       },
       {
-        src: "assets/projects/pos (5).png",
+        src: "assets/projects/pos/pos (5).png",
         caption: "Pengaturan Profil, Manajemen Akun Kasir, & Hak Akses Admin"
       },
       {
-        src: "assets/projects/pos (4).png",
+        src: "assets/projects/pos/pos (4).png",
         caption: "Rekapitulasi Laporan Penjualan, Keuntungan, & Grafik Arus Kas"
       },
       {
-        src: "assets/projects/pos (3).png",
+        src: "assets/projects/pos/pos (3).png",
         caption: "Katalog & Manajemen Stok Barang / Produk Toko"
       },
       {
-        src: "assets/projects/pos (2).png",
+        src: "assets/projects/pos/pos (2).png",
         caption: "Menu Kasir Interaktif (Point of Sale) & Keranjang Belanja Transaksi Cepat"
       },
       {
-        src: "assets/projects/pos (1).png",
+        src: "assets/projects/pos/pos (1).png",
         caption: "Tampilan Utama Dashboard Manajemen Transaksi & Ringkasan Toko"
       }
     ],
