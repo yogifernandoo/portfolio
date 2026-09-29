@@ -165,11 +165,6 @@
                   <span class="chip-item">REST API</span>
                 </div>
 
-                <div class="avatar-action-bar">
-                  <button id="btn-custom-avatar-guide" class="btn-admin-action" title="Ganti Foto Profil">
-                    <span>📷 Kelola Foto Profil</span>
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -591,167 +586,11 @@
     </div>
   </dialog>
 
-  <!-- ====================================================================
-       INTERACTIVE AVATAR CROPPER DIALOG (ADMIN)
-       ==================================================================== -->
-  <dialog id="avatar-guide-dialog">
-    <div class="modal-case-study-frame" style="max-width: 520px;">
-      <div class="modal-header-bar">
-        <h3>Kelola &amp; Crop Foto Profil</h3>
-        <button id="avatar-guide-close" class="btn-close-modal" aria-label="Tutup">✕</button>
-      </div>
-
-      <div style="padding: 1.5rem;">
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-          Pilih file foto dari perangkat Anda. Geser dan zoom untuk menyesuaikan lingkaran foto profil.
-        </p>
-
-        <input type="file" id="avatar-file-input" accept="image/*" class="form-input" style="margin-bottom: 1.25rem;">
-
-        <div class="cropper-container-box">
-          <canvas id="crop-canvas" width="320" height="320"></canvas>
-        </div>
-
-        <div style="margin-top: 1.2rem; display: flex; align-items: center; gap: 1rem;">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">Zoom:</span>
-          <input type="range" id="crop-zoom-slider" min="0.5" max="3" step="0.05" value="1" style="flex-grow: 1;">
-        </div>
-
-        <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: flex-end;">
-          <a id="btn-download-cropped" href="#" download="profile.png" class="btn-secondary" style="display: none;">
-            <span>💾 Unduh profile.png</span>
-          </a>
-          <button id="btn-apply-crop" class="btn-primary">
-            <span>Terapkan Foto</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- ====================================================================
-       CRUD MODAL UNTUK PROYEK (ADMIN)
-       ==================================================================== -->
-  <dialog id="project-crud-dialog">
-    <div class="modal-case-study-frame" style="max-width: 640px;">
-      <div class="modal-header-bar">
-        <h3 id="crud-modal-title">Kelola Data Proyek</h3>
-        <button id="crud-modal-close" class="btn-close-modal" aria-label="Tutup Dialog">✕</button>
-      </div>
-
-      <form id="project-crud-form" style="padding: 1.5rem;">
-        <input type="hidden" id="crud-project-id">
-
-        <div class="form-group">
-          <label for="crud-title">Judul Proyek</label>
-          <input type="text" id="crud-title" class="form-input" placeholder="Contoh: POS TOKO YOGI" required>
-        </div>
-
-        <div class="form-group">
-          <label for="crud-subtitle">Subjudul / Ringkasan Singkat</label>
-          <input type="text" id="crud-subtitle" class="form-input" placeholder="Aplikasi Point of Sale berbasis Laravel..." required>
-        </div>
-
-        <div class="form-group">
-          <label for="crud-overview">Deskripsi Lengkap / Latar Belakang</label>
-          <textarea id="crud-overview" class="form-textarea" placeholder="Jelaskan tujuan dan fungsi sistem ini..." required></textarea>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div class="form-group">
-            <label for="crud-tags">Teknologi (Pisahkan Koma)</label>
-            <input type="text" id="crud-tags" class="form-input" placeholder="Laravel, PHP, MySQL, Tailwind CSS">
-          </div>
-          <div class="form-group">
-            <label for="crud-status">Status Proyek</label>
-            <input type="text" id="crud-status" class="form-input" placeholder="Production Ready">
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div class="form-group">
-            <label for="crud-year">Tahun</label>
-            <input type="text" id="crud-year" class="form-input" placeholder="2026">
-          </div>
-          <div class="form-group">
-            <label for="crud-github">Tautan GitHub Repository (Opsional)</label>
-            <input type="url" id="crud-github" class="form-input" placeholder="https://github.com/yogifernandoo/repo">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="crud-live">Tautan Live Website (Opsional)</label>
-          <input type="url" id="crud-live" class="form-input" placeholder="https://website.com">
-        </div>
-
-        <div class="form-group">
-          <label for="crud-features">Fitur Utama (Satu per baris)</label>
-          <textarea id="crud-features" class="form-textarea" style="min-height: 80px;" placeholder="Sistem Transaksi Kasir Cepat&#10;Manajemen Stok Real-time&#10;Cetak Struk Nota"></textarea>
-        </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
-          <button type="button" onclick="document.getElementById('project-crud-dialog').close()" class="btn-secondary">
-            Batal
-          </button>
-          <button type="submit" class="btn-primary">
-            <span>Simpan Data Proyek</span>
-          </button>
-        </div>
-      </form>
-    </div>
-  </dialog>
-
-  <!-- ====================================================================
-       ADMIN LOGIN DIALOG (TERSEMBUNYI — Dipicu via Ctrl+Shift+A)
-       ==================================================================== -->
-  <dialog id="admin-login-dialog" aria-labelledby="admin-login-title">
-    <div class="modal-case-study-frame" style="max-width: 420px;">
-      <div class="modal-header-bar">
-        <div class="modal-title-group">
-          <h3 id="admin-login-title">🔐 Portal Admin</h3>
-        </div>
-        <button id="admin-login-close" class="btn-close-modal" aria-label="Tutup">✕</button>
-      </div>
-
-      <form id="admin-login-form" style="padding: 1.75rem;">
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
-          Masukkan kata sandi untuk mengaktifkan Mode Admin. Area ini hanya untuk <strong style="color: var(--text-heading);">Yogi Fernando</strong>.
-        </p>
-
-        <div class="form-group" style="margin-bottom: 1.25rem;">
-          <label for="admin-password-input" style="font-size: 0.85rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.5rem; display: block;">Kata Sandi</label>
-          <input
-            type="password"
-            id="admin-password-input"
-            class="form-input"
-            placeholder="Masukkan kata sandi admin..."
-            autocomplete="current-password"
-            required
-          >
-        </div>
-
-        <p id="admin-login-error" style="display: none; color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; font-weight: 500;">
-          ⚠️ Kata sandi salah. Akses ditolak.
-        </p>
-
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-          <span>Masuk Mode Admin</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-            <polyline points="10 17 15 12 10 7"/>
-            <line x1="15" y1="12" x2="3" y2="12"/>
-          </svg>
-        </button>
-      </form>
-    </div>
-  </dialog>
-
   <!-- Scripts -->
 
   <script src="data/projects-data.js"></script>
   <script src="data/certificates-data.js"></script>
-  <script src="js/admin-auth.js"></script>
-  <script src="js/projects.js"></script>
+  <script src="js/projects-public.js"></script>
   <script src="js/certificates.js"></script>
   <script src="js/main.js"></script>
 </body>

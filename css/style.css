@@ -510,22 +510,6 @@ p strong {
   color: var(--text-muted);
 }
 
-.avatar-action-bar {
-  margin-top: 1.25rem;
-  display: none; /* Otomatis aktif saat Yogi login */
-}
-
-.btn-admin-action {
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-sm);
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid var(--border-active);
-  color: var(--accent-cyan);
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 /* ==============================================================================
    SECTION HEADERS
    ============================================================================== */
@@ -862,35 +846,6 @@ p strong {
 .portfolio-archive-link-wrap {
   text-align: center;
   margin-top: 3.5rem;
-}
-
-/* Card Admin Action Bar */
-.card-admin-action-bar {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  display: flex;
-  gap: 0.4rem;
-  z-index: 5;
-}
-
-.btn-card-edit, .btn-card-delete {
-  padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-xs);
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid var(--border-subtle);
-}
-
-.btn-card-edit {
-  background: rgba(14, 18, 30, 0.9);
-  color: var(--accent-cyan);
-}
-
-.btn-card-delete {
-  background: rgba(14, 18, 30, 0.9);
-  color: #ef4444;
 }
 
 /* ==============================================================================
@@ -1369,17 +1324,6 @@ dialog::backdrop {
 .cosmic-toast.toast-show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Avatar Cropper Box */
-.cropper-container-box {
-  width: 320px;
-  height: 320px;
-  margin: 0 auto;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: #070912;
-  border: 1px solid var(--border-subtle);
 }
 
 /* ==============================================================================
@@ -2258,7 +2202,6 @@ h1, h2, h3, h4 { letter-spacing: 0; }
 .btn-primary,
 .btn-secondary,
 .btn-ghost,
-.btn-admin-action,
 .cert-filter-btn,
 .form-input,
 .form-textarea,

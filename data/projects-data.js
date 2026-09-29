@@ -91,6 +91,79 @@ const PORTFOLIO_PROJECTS = [
     githubUrl: ""
   },
   {
+    id: "pemesanan-tiket-bus-cv-po-mandiri",
+    title: "Sistem Pemesanan Tiket Bus CV PO Mandiri",
+    subtitle: "Platform pemesanan tiket travel dengan portal pelanggan dan panel operasional admin",
+    year: "2026",
+    status: "Website Pemesanan Tiket",
+    bannerImage: "assets/projects/tiket/1.png",
+    images: [
+      {
+        src: "assets/projects/tiket/1.png",
+        caption: "Halaman utama sebagai titik awal pelanggan untuk mengenal layanan dan memulai pencarian perjalanan."
+      },
+      {
+        src: "assets/projects/tiket/2.png",
+        caption: "Alur pendaftaran pelanggan untuk membuat akun sebelum melakukan pemesanan tiket."
+      },
+      {
+        src: "assets/projects/tiket/3.png",
+        caption: "Area akses pelanggan untuk masuk dan melanjutkan proses pemesanan secara personal."
+      },
+      {
+        src: "assets/projects/tiket/4.png",
+        caption: "Antarmuka pemesanan yang menghubungkan pelanggan dengan pilihan perjalanan dan rute bus."
+      },
+      {
+        src: "assets/projects/tiket/5.png",
+        caption: "Panel admin untuk memantau operasional dan mengelola data utama layanan tiket."
+      },
+      {
+        src: "assets/projects/tiket/6.png",
+        caption: "Pengelolaan alur rute perjalanan agar informasi keberangkatan dan tujuan tersusun."
+      },
+      {
+        src: "assets/projects/tiket/7.png",
+        caption: "Manajemen data kendaraan bus yang digunakan untuk mendukung perjalanan."
+      },
+      {
+        src: "assets/projects/tiket/8.png",
+        caption: "Pengaturan informasi rekening bank sebagai acuan pembayaran dan konfirmasi pesanan."
+      },
+      {
+        src: "assets/projects/tiket/9.png",
+        caption: "Pengelolaan pesanan tiket oleh admin, termasuk pemeriksaan status dan konfirmasi pemesanan."
+      }
+    ],
+    overview: "Website pemesanan tiket travel untuk CV PO Mandiri yang menghubungkan pelanggan dengan proses pemesanan bus secara daring. Sistem memiliki dua role utama: pelanggan dapat mendaftar dan memesan tiket, sedangkan admin mengelola rute perjalanan, kendaraan, informasi bank, serta konfirmasi pesanan.",
+    tags: ["Pemesanan Tiket", "Travel Bus", "Multi-Role", "Manajemen Rute", "CV PO Mandiri"],
+    metrics: [
+      { label: "Hak Akses", value: "2 Role" },
+      { label: "Pengguna", value: "Admin & Pelanggan" },
+      { label: "Dokumentasi", value: "9 Layar" }
+    ],
+    features: [
+      "Pendaftaran akun pelanggan untuk mengakses layanan pemesanan tiket",
+      "Alur pemesanan tiket bus untuk pelanggan",
+      "Pengelolaan rute dan alur perjalanan oleh admin",
+      "Manajemen data kendaraan bus",
+      "Pengaturan informasi bank untuk pembayaran tiket",
+      "Pemeriksaan dan konfirmasi pesanan tiket oleh admin"
+    ],
+    challenges: [
+      {
+        challenge: "Menyatukan kebutuhan pelanggan dan operasional pengelola dalam satu sistem tanpa mencampur hak akses.",
+        solution: "Membagi alur penggunaan menjadi role pelanggan untuk pendaftaran dan pemesanan, serta role admin untuk pengelolaan operasional."
+      },
+      {
+        challenge: "Menjaga informasi perjalanan, kendaraan, pembayaran, dan status pesanan tetap terkelola.",
+        solution: "Menyediakan fitur admin untuk mengatur rute dan kendaraan, memperbarui informasi bank, serta memeriksa dan mengonfirmasi pesanan tiket."
+      }
+    ],
+    liveUrl: "",
+    githubUrl: ""
+  },
+  {
     id: "siakad-smk-kelapa-sawit",
     title: "SIAKAD SMK Kelapa Sawit",
     subtitle: "Sistem Informasi Akademik Terintegrasi dengan Manajemen Multi-Role",
