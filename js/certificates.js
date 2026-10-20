@@ -13,6 +13,17 @@
     return window.CERTIFICATES_DATA || [];
   }
 
+  function renderPdfCover(item) {
+    return `
+      <div class="certificate-pdf-cover" role="img" aria-label="Sertifikat IBM SkillsBuild: ${escapeHTML(item.title)}">
+        <span class="certificate-pdf-cover-brand">IBM SkillsBuild</span>
+        <span class="certificate-pdf-cover-label">Certificate of Completion</span>
+        <strong class="certificate-pdf-cover-title">${escapeHTML(item.title)}</strong>
+        <span class="certificate-pdf-cover-recipient">Yogi Fernando · ${escapeHTML(item.year)}</span>
+      </div>
+    `;
+  }
+
   function initCertificates() {
     renderCertificatesGrid();
     renderHomepageCertPreview();
@@ -49,27 +60,27 @@
 
       const isAward = item.badge && item.badge.includes("Juara");
       const badgeClass = isAward ? "cert-badge-gold" : "cert-badge-blue";
+      const badgeMarkup = item.fileType === "pdf"
+        ? ""
+        : `<span class="cert-floating-badge ${badgeClass}">${escapeHTML(item.badge)}</span>`;
 
       const tags = (item.skills || [])
         .slice(0, 4)
         .map((s) => `<span class="tag-pill">${escapeHTML(s)}</span>`)
         .join("");
 
+      const mediaMarkup = item.fileType === "pdf"
+        ? renderPdfCover(item)
+        : `<div class="cert-image-placeholder" id="placeholder-${escapeHTML(item.id)}">
+             <span class="cert-fallback-icon">${item.fallbackIcon || '📜'}</span>
+             <span class="cert-fallback-label">${escapeHTML(item.issuer)}</span>
+           </div>
+           <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="cert-img-cover" loading="lazy" onload="const ph = document.getElementById('placeholder-${escapeHTML(item.id)}'); if(ph) ph.style.display='none';" onerror="this.style.display='none'" />`;
+
       card.innerHTML = `
         <div class="cert-media-box">
-          <div class="cert-image-placeholder" id="placeholder-${escapeHTML(item.id)}">
-            <span class="cert-fallback-icon">${item.fallbackIcon || '📜'}</span>
-            <span class="cert-fallback-label">${escapeHTML(item.issuer)}</span>
-          </div>
-          <img 
-            src="${escapeHTML(item.image)}" 
-            alt="${escapeHTML(item.title)}" 
-            class="cert-img-cover" 
-            loading="lazy"
-            onload="const ph = document.getElementById('placeholder-${escapeHTML(item.id)}'); if(ph) ph.style.display='none';"
-            onerror="this.style.display='none'"
-          />
-          <span class="cert-floating-badge ${badgeClass}">${escapeHTML(item.badge)}</span>
+          ${mediaMarkup}
+          ${badgeMarkup}
         </div>
 
         <div class="cert-card-body">
@@ -126,14 +137,13 @@
         .map((s) => `<span class="tag-pill">${escapeHTML(s)}</span>`)
         .join("");
 
+      const previewMarkup = item.fileType === "pdf"
+        ? renderPdfCover(item)
+        : `<img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" loading="lazy" onerror="this.parentElement.style.display='none'" />`;
+
       card.innerHTML = `
         <div class="cert-preview-card-img-wrap">
-          <img 
-            src="${escapeHTML(item.image)}" 
-            alt="${escapeHTML(item.title)}" 
-            loading="lazy"
-            onerror="this.parentElement.style.display='none'"
-          />
+          ${previewMarkup}
         </div>
         <div class="cert-preview-body">
           <span class="cert-preview-badge ${badgeClass}">${escapeHTML(item.badge)}</span>
@@ -193,28 +203,56 @@
     const badgeEl = document.getElementById("modal-cert-badge");
     if (badgeEl) {
       badgeEl.textContent = item.badge || "";
+      badgeEl.hidden = item.fileType === "pdf";
       const isAward = item.badge && item.badge.includes("Juara");
       badgeEl.className = `cert-floating-badge ${isAward ? "cert-badge-gold" : "cert-badge-blue"}`;
     }
 
     const imgEl = document.getElementById("modal-cert-image");
     const fallbackBox = document.getElementById("modal-cert-fallback");
+    const viewport = document.querySelector(".modal-cert-viewport");
+    const pdfFrameWrap = document.getElementById("modal-cert-pdf-wrap");
+    const pdfFrame = document.getElementById("modal-cert-pdf");
+    const pdfLink = document.getElementById("modal-cert-pdf-link");
     if (imgEl) {
-      imgEl.src = item.image;
-      imgEl.alt = item.title;
-      imgEl.style.display = "block";
-      if (fallbackBox) fallbackBox.style.display = "none";
-
-      imgEl.onerror = () => {
-        imgEl.style.display = "none";
-        if (fallbackBox) {
-          fallbackBox.style.display = "flex";
-          const iconEl = document.getElementById("modal-fallback-icon");
-          if (iconEl) iconEl.textContent = item.fallbackIcon || "🏆";
-          const fTitleEl = document.getElementById("modal-fallback-title");
-          if (fTitleEl) fTitleEl.textContent = item.title;
+      const isPdf = item.fileType === "pdf";
+      imgEl.onerror = null;
+      imgEl.style.display = isPdf ? "none" : "block";
+      if (viewport) viewport.classList.toggle("has-pdf", isPdf);
+      if (pdfFrameWrap) pdfFrameWrap.hidden = !isPdf;
+      if (pdfFrame) {
+        if (isPdf) {
+          pdfFrame.title = item.title;
+          pdfFrame.style.setProperty("--certificate-rotation", `${Number(item.rotation) || 0}deg`);
+          pdfFrame.src = `${item.image}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
+        } else {
+          pdfFrame.removeAttribute("src");
         }
-      };
+      }
+      if (pdfLink) {
+        pdfLink.href = isPdf ? item.image : "#";
+        pdfLink.hidden = !isPdf;
+      }
+
+      if (isPdf) {
+        imgEl.removeAttribute("src");
+        if (fallbackBox) fallbackBox.style.display = "none";
+      } else {
+        imgEl.src = item.image;
+        imgEl.alt = item.title;
+        if (pdfFrameWrap) pdfFrameWrap.hidden = true;
+        if (fallbackBox) fallbackBox.style.display = "none";
+        imgEl.onerror = () => {
+          imgEl.style.display = "none";
+          if (fallbackBox) {
+            fallbackBox.style.display = "flex";
+            const iconEl = document.getElementById("modal-fallback-icon");
+            if (iconEl) iconEl.textContent = item.fallbackIcon || "🏆";
+            const fTitleEl = document.getElementById("modal-fallback-title");
+            if (fTitleEl) fTitleEl.textContent = item.title;
+          }
+        };
+      }
     }
 
     const highlightsList = document.getElementById("modal-cert-highlights");

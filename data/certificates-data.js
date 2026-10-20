@@ -2,7 +2,7 @@
  * ==============================================================================
  * DATA PENCAPAIAN, PRESTASI & SERTIFIKASI — YOGI FERNANDO
  * ==============================================================================
- * Berisi daftar prestasi kompetisi nasional dan sertifikasi profesional Dicoding (Android & Flutter).
+ * Berisi daftar prestasi kompetisi nasional serta sertifikasi profesional.
  */
 
 const CERTIFICATES_DATA = [
@@ -65,6 +65,48 @@ const CERTIFICATES_DATA = [
     ],
     skills: ["Flutter SDK", "Dart", "State Management (Provider/Bloc)", "Cross-Platform Mobile", "RESTful API Integration", "Custom Widgets"],
     verifyUrl: "https://www.linkedin.com/in/yogi-fernando1"
+  },
+  {
+    id: "ibm-introduction-llm",
+    title: "Introduction to Large Language Models",
+    subtitle: "IBM SkillsBuild course completion certificate (1 hour 30 minutes)",
+    category: "Sertifikasi Pemrograman",
+    badge: "IBM SkillsBuild",
+    issuer: "IBM SkillsBuild",
+    year: "2026",
+    status: "Certificate of Completion",
+    image: "assets/certificates/intro.pdf",
+    fileType: "pdf",
+    rotation: 90,
+    fallbackIcon: "📜",
+    overview: "Sertifikat penyelesaian course Introduction to Large Language Models dari IBM SkillsBuild.",
+    highlights: [
+      "Menyelesaikan course Introduction to Large Language Models",
+      "Durasi belajar tercantum 1 jam 30 menit",
+      "Tanggal penyelesaian tercantum 17 Oktober 2026"
+    ],
+    skills: ["Large Language Models", "Generative AI"]
+  },
+  {
+    id: "ibm-code-troubleshooting-lab",
+    title: "Lab: Troubleshoot Your Code Using IBM Bob",
+    subtitle: "IBM SkillsBuild lab completion certificate (30 minutes)",
+    category: "Sertifikasi Pemrograman",
+    badge: "IBM SkillsBuild",
+    issuer: "IBM SkillsBuild",
+    year: "2026",
+    status: "Certificate of Completion",
+    image: "assets/certificates/lab.pdf",
+    fileType: "pdf",
+    rotation: 90,
+    fallbackIcon: "📜",
+    overview: "Sertifikat penyelesaian lab Troubleshoot Your Code Using IBM Bob dari IBM SkillsBuild.",
+    highlights: [
+      "Menyelesaikan lab Troubleshoot Your Code Using IBM Bob",
+      "Durasi belajar tercantum 30 menit",
+      "Tanggal penyelesaian tercantum 17 Oktober 2026"
+    ],
+    skills: ["IBM Bob", "Code Troubleshooting"]
   }
 ];
 
