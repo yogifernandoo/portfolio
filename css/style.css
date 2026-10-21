@@ -1627,6 +1627,24 @@ dialog::backdrop {
   display: block;
 }
 
+.certificate-image-rotated {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  width: auto !important;
+  height: 145.45% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  transform: translate(-50%, -50%) rotate(var(--certificate-image-rotation, 90deg)) !important;
+}
+
+.modal-cert-viewport.has-rotated-image {
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: 16 / 11;
+}
+
 .cert-preview-card:hover .cert-preview-card-img-wrap img {
   transform: scale(1.04);
 }
@@ -2499,86 +2517,5 @@ dialog::backdrop { background: rgba(25, 25, 25, 0.72); backdrop-filter: none; }
   font-weight: 700;
 }
 
-.certificate-pdf-cover {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.45rem;
-  overflow: hidden;
-  padding: clamp(1rem, 4vw, 2rem);
-  background: #fffdf6;
-  border-top: 8px solid #165bd8;
-  color: #191919;
-  text-align: left;
-}
-
-.certificate-pdf-cover-brand {
-  padding: 0.2rem 0.45rem;
-  background: #dce8ff;
-  border: 1.5px solid #191919;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.certificate-pdf-cover-label {
-  color: #5c5b52;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.certificate-pdf-cover-title {
-  max-width: 34rem;
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 2vw, 1.4rem);
-  line-height: 1.2;
-}
-
-.certificate-pdf-cover-recipient {
-  margin-top: 0.35rem;
-  color: #5c5b52;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-}
-
-.certificate-pdf-wrap {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-
-.certificate-pdf-wrap[hidden],
 .modal-footer-actions a[hidden] { display: none; }
-.cert-floating-badge[hidden] { display: none; }
-
-.certificate-pdf-frame {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 68.75%;
-  height: 145.45%;
-  border: 0;
-  background: #fff;
-  pointer-events: none;
-  transform: translate(-50%, -50%) rotate(var(--certificate-rotation, 90deg));
-}
-
-.modal-cert-viewport.has-pdf {
-  min-height: 0;
-  max-height: none;
-  aspect-ratio: 16 / 11;
-  display: block;
-  background: #fff;
-}
-
-.modal-certificate-pdf-wrap { z-index: 1; }
 

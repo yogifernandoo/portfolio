@@ -73,13 +73,13 @@
         <!-- Filter Chips -->
         <div class="cert-filter-bar">
           <button class="cert-filter-btn active" data-category="all">
-            <span>Semua Sertifikat (5)</span>
+            <span>Semua Sertifikat (7)</span>
           </button>
           <button class="cert-filter-btn" data-category="Penghargaan & Prestasi">
             <span>🏆 Prestasi Nasional (1)</span>
           </button>
           <button class="cert-filter-btn" data-category="Sertifikasi Pemrograman">
-            <span>📜 Sertifikasi Pemrograman (4)</span>
+            <span>📜 Sertifikasi Pemrograman (6)</span>
           </button>
         </div>
       </section>
@@ -128,9 +128,6 @@
         <div class="modal-cert-viewport">
           <span class="cert-floating-badge cert-badge-gold" id="modal-cert-badge">Verified</span>
           <img id="modal-cert-image" src="" alt="Sertifikat Dokumentasi">
-          <div class="certificate-pdf-wrap modal-certificate-pdf-wrap" id="modal-cert-pdf-wrap" hidden>
-            <iframe id="modal-cert-pdf" class="certificate-pdf-frame" title="Pratinjau PDF Sertifikat" tabindex="-1" aria-hidden="true"></iframe>
-          </div>
           <div id="modal-cert-fallback" class="modal-fallback-box" style="display: none;">
             <span class="modal-fallback-icon" id="modal-fallback-icon">🏆</span>
             <h4 id="modal-fallback-title" style="margin-bottom: 0.5rem;">Sertifikat Terverifikasi</h4>
@@ -158,8 +155,8 @@
         </div>
 
         <div class="modal-footer-actions">
-          <a id="modal-cert-pdf-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary" hidden>
-            <span>Buka PDF Sertifikat ↗</span>
+          <a id="modal-cert-pdf-link" href="#" download class="btn-secondary" hidden>
+            <span>Unduh PDF Sertifikat ↓</span>
           </a>
           <a id="modal-cert-linkedin" href="https://www.linkedin.com/in/yogi-fernando1" target="_blank" rel="noopener noreferrer" class="btn-primary">
             <span>Lihat Profil LinkedIn ↗</span>
