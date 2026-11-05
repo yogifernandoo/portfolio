@@ -75,9 +75,9 @@ const CERTIFICATES_DATA = [
     issuer: "IBM SkillsBuild — Hosted by Hacktiv8 Indonesia",
     year: "2026",
     status: "Certificate of Accomplishment",
+    image: "assets/certificates/hacktiv8-ai-agent.jpg",
     pdf: "assets/certificates/sertifikat hacktiv8.pdf",
     fallbackIcon: "🤖",
-    previewLabel: "Certificate of Accomplishment",
     overview: "Menyelesaikan program IBM SkillsBuild University Education dengan course IT - AI Agent for Programming yang diselenggarakan oleh Hacktiv8 Indonesia, termasuk proyek akhir.",
     highlights: [
       "Menyelesaikan course IT - AI Agent for Programming",
