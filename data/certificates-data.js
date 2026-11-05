@@ -67,6 +67,70 @@ const CERTIFICATES_DATA = [
     verifyUrl: "https://www.linkedin.com/in/yogi-fernando1"
   },
   {
+    id: "hacktiv8-ai-agent-programming",
+    title: "IT - AI Agent for Programming",
+    subtitle: "Program IBM SkillsBuild University Education bersama Hacktiv8 Indonesia · 9 jam",
+    category: "Sertifikasi Pemrograman",
+    badge: "IBM SkillsBuild × Hacktiv8",
+    issuer: "IBM SkillsBuild — Hosted by Hacktiv8 Indonesia",
+    year: "2026",
+    status: "Certificate of Accomplishment",
+    pdf: "assets/certificates/sertifikat hacktiv8.pdf",
+    fallbackIcon: "🤖",
+    previewLabel: "Certificate of Accomplishment",
+    overview: "Menyelesaikan program IBM SkillsBuild University Education dengan course IT - AI Agent for Programming yang diselenggarakan oleh Hacktiv8 Indonesia, termasuk proyek akhir.",
+    highlights: [
+      "Menyelesaikan course IT - AI Agent for Programming",
+      "Menyelesaikan proyek akhir sebagai bagian dari persyaratan program",
+      "Periode pelatihan 23 Oktober 2026, total 9 jam; sertifikat diterbitkan 27 Oktober 2026"
+    ],
+    skills: ["AI Agents", "AI Programming", "Generative AI"],
+    rotation: 0
+  },
+  {
+    id: "ibm-intelligent-by-design-ai-agent",
+    title: "Intelligent by Design: Build an AI Agent",
+    subtitle: "IBM SkillsBuild completion certificate · 3 jam 30 menit",
+    category: "Sertifikasi Pemrograman",
+    badge: "IBM SkillsBuild",
+    issuer: "IBM SkillsBuild",
+    year: "2026",
+    status: "Certificate of Completion",
+    image: "assets/certificates/sertifikat ai.jpg",
+    pdf: "assets/certificates/sertifikat ai.pdf",
+    rotation: 90,
+    fallbackIcon: "🤖",
+    overview: "Sertifikat penyelesaian Intelligent by Design: Build an AI Agent dari IBM SkillsBuild, tercatat pada Adobe Learning Manager.",
+    highlights: [
+      "Menyelesaikan course Intelligent by Design: Build an AI Agent",
+      "Kode course ALM-COURSE_3946359",
+      "Durasi belajar 3 jam 30 menit",
+      "Tanggal penyelesaian 21 Oktober 2026"
+    ],
+    skills: ["AI Agents", "Generative AI", "Large Language Models"]
+  },
+  {
+    id: "ibm-build-ai-agent-badge",
+    title: "Build an AI Agent",
+    subtitle: "IBM SkillsBuild badge issued on 21 October 2026",
+    category: "Sertifikasi Pemrograman",
+    badge: "IBM SkillsBuild Badge",
+    issuer: "IBM SkillsBuild",
+    year: "2026",
+    status: "Verified Badge",
+    image: "assets/certificates/badge ai.jpg",
+    pdf: "assets/certificates/badge ai.pdf",
+    rotation: 0,
+    fallbackIcon: "🤖",
+    overview: "Badge IBM SkillsBuild untuk penyelesaian Build an AI Agent, diterbitkan kepada Yogi Fernando pada 21 Oktober 2026.",
+    highlights: [
+      "Menyelesaikan program Build an AI Agent dari IBM SkillsBuild",
+      "Badge diterbitkan pada 21 Oktober 2026"
+    ],
+    skills: ["AI Agents", "Generative AI"],
+    verifyUrl: "https://www.credly.com/go/otBIXMD4"
+  },
+  {
     id: "ibm-introduction-llm",
     title: "Introduction to Large Language Models",
     subtitle: "IBM SkillsBuild course completion certificate (1 hour 30 minutes)",
@@ -107,49 +171,6 @@ const CERTIFICATES_DATA = [
       "Tanggal penyelesaian tercantum 17 Oktober 2026"
     ],
     skills: ["IBM Bob", "Code Troubleshooting"]
-  },
-  {
-    id: "ibm-build-ai-agent-badge",
-    title: "Build an AI Agent",
-    subtitle: "IBM SkillsBuild badge issued on 21 October 2026",
-    category: "Sertifikasi Pemrograman",
-    badge: "IBM SkillsBuild Badge",
-    issuer: "IBM SkillsBuild",
-    year: "2026",
-    status: "Verified Badge",
-    image: "assets/certificates/badge ai.jpg",
-    pdf: "assets/certificates/badge ai.pdf",
-    rotation: 0,
-    fallbackIcon: "🤖",
-    overview: "Badge IBM SkillsBuild untuk penyelesaian Build an AI Agent, diterbitkan kepada Yogi Fernando pada 21 Oktober 2026.",
-    highlights: [
-      "Menyelesaikan program Build an AI Agent dari IBM SkillsBuild",
-      "Badge diterbitkan pada 21 Oktober 2026"
-    ],
-    skills: ["AI Agents", "Generative AI"],
-    verifyUrl: "https://www.credly.com/go/otBIXMD4"
-  },
-  {
-    id: "ibm-intelligent-by-design-ai-agent",
-    title: "Intelligent by Design: Build an AI Agent",
-    subtitle: "IBM SkillsBuild completion certificate · 3 jam 30 menit",
-    category: "Sertifikasi Pemrograman",
-    badge: "IBM SkillsBuild",
-    issuer: "IBM SkillsBuild",
-    year: "2026",
-    status: "Certificate of Completion",
-    image: "assets/certificates/sertifikat ai.jpg",
-    pdf: "assets/certificates/sertifikat ai.pdf",
-    rotation: 90,
-    fallbackIcon: "🤖",
-    overview: "Sertifikat penyelesaian Intelligent by Design: Build an AI Agent dari IBM SkillsBuild, tercatat pada Adobe Learning Manager.",
-    highlights: [
-      "Menyelesaikan course Intelligent by Design: Build an AI Agent",
-      "Kode course ALM-COURSE_3946359",
-      "Durasi belajar 3 jam 30 menit",
-      "Tanggal penyelesaian 21 Oktober 2026"
-    ],
-    skills: ["AI Agents", "Generative AI", "Large Language Models"]
   }
 ];
 

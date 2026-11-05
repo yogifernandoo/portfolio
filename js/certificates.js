@@ -57,12 +57,15 @@
         .join("");
 
       const rotation = Number(item.rotation) || 0;
+      const imageMarkup = item.image
+        ? `<img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="cert-img-cover${rotation ? " certificate-image-rotated" : ""}" style="--certificate-image-rotation: ${rotation}deg" loading="lazy" onload="const ph = document.getElementById('placeholder-${escapeHTML(item.id)}'); if(ph) ph.style.display='none';" onerror="this.style.display='none'" />`
+        : "";
       const mediaMarkup = `
         <div class="cert-image-placeholder" id="placeholder-${escapeHTML(item.id)}">
-          <span class="cert-fallback-icon">${item.fallbackIcon || '📜'}</span>
-          <span class="cert-fallback-label">${escapeHTML(item.issuer)}</span>
+          <span class="cert-fallback-icon">${escapeHTML(item.fallbackIcon || "📜")}</span>
+          <span class="cert-fallback-label">${escapeHTML(item.previewLabel || item.issuer)}</span>
         </div>
-        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="cert-img-cover${rotation ? " certificate-image-rotated" : ""}" style="--certificate-image-rotation: ${rotation}deg" loading="lazy" onload="const ph = document.getElementById('placeholder-${escapeHTML(item.id)}'); if(ph) ph.style.display='none';" onerror="this.style.display='none'" />
+        ${imageMarkup}
       `;
 
       card.innerHTML = `
@@ -126,7 +129,15 @@
         .join("");
 
       const rotation = Number(item.rotation) || 0;
-      const previewMarkup = `<img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="${rotation ? "certificate-image-rotated" : ""}" style="--certificate-image-rotation: ${rotation}deg" loading="lazy" onerror="this.parentElement.style.display='none'" />`;
+      const previewFallback = `
+        <div class="cert-image-placeholder">
+          <span class="cert-fallback-icon">${escapeHTML(item.fallbackIcon || "📜")}</span>
+          <span class="cert-fallback-label">${escapeHTML(item.previewLabel || item.issuer)}</span>
+        </div>
+      `;
+      const previewMarkup = item.image
+        ? `${previewFallback}<img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="${rotation ? "certificate-image-rotated" : ""}" style="--certificate-image-rotation: ${rotation}deg" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'" />`
+        : previewFallback;
 
       card.innerHTML = `
         <div class="cert-preview-card-img-wrap">
@@ -202,29 +213,41 @@
     if (imgEl) {
       const rotation = Number(item.rotation) || 0;
       imgEl.onerror = null;
-      imgEl.style.display = "block";
-      imgEl.classList.toggle("certificate-image-rotated", Boolean(rotation));
-      imgEl.style.setProperty("--certificate-image-rotation", `${rotation}deg`);
-      if (viewport) viewport.classList.toggle("has-rotated-image", Boolean(rotation));
-      imgEl.src = item.image;
       imgEl.alt = item.title;
+      imgEl.classList.toggle("certificate-image-rotated", Boolean(item.image && rotation));
+      imgEl.style.setProperty("--certificate-image-rotation", `${rotation}deg`);
+      if (viewport) viewport.classList.toggle("has-rotated-image", Boolean(item.image && rotation));
+      if (item.image) {
+        imgEl.style.display = "block";
+        imgEl.src = item.image;
+        if (fallbackBox) fallbackBox.style.display = "none";
+      } else {
+        imgEl.removeAttribute("src");
+        imgEl.style.display = "none";
+        if (fallbackBox) fallbackBox.style.display = "flex";
+        const iconEl = document.getElementById("modal-fallback-icon");
+        if (iconEl) iconEl.textContent = item.fallbackIcon || "🏆";
+        const fTitleEl = document.getElementById("modal-fallback-title");
+        if (fTitleEl) fTitleEl.textContent = item.title;
+      }
       if (pdfLink) {
         pdfLink.href = item.pdf || "#";
         pdfLink.download = item.pdf ? item.pdf.split("/").pop() : "";
         pdfLink.hidden = !item.pdf;
       }
 
-      if (fallbackBox) fallbackBox.style.display = "none";
-      imgEl.onerror = () => {
-        imgEl.style.display = "none";
-        if (fallbackBox) {
-          fallbackBox.style.display = "flex";
-          const iconEl = document.getElementById("modal-fallback-icon");
-          if (iconEl) iconEl.textContent = item.fallbackIcon || "🏆";
-          const fTitleEl = document.getElementById("modal-fallback-title");
-          if (fTitleEl) fTitleEl.textContent = item.title;
-        }
-      };
+      if (item.image) {
+        imgEl.onerror = () => {
+          imgEl.style.display = "none";
+          if (fallbackBox) {
+            fallbackBox.style.display = "flex";
+            const iconEl = document.getElementById("modal-fallback-icon");
+            if (iconEl) iconEl.textContent = item.fallbackIcon || "🏆";
+            const fTitleEl = document.getElementById("modal-fallback-title");
+            if (fTitleEl) fTitleEl.textContent = item.title;
+          }
+        };
+      }
     }
 
     const highlightsList = document.getElementById("modal-cert-highlights");
